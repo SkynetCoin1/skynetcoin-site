@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skynet Coin</title>
+  <style>
+    body {
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #0ff;
+      margin: 0;
+      text-align: center;
+    }
+    header, section, footer {
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      margin: 20px;
+      border-radius: 10px;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border: 2px solid #0ff;
+      border-radius: 5px;
+      color: #0ff;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .buttons a:hover {
+      background-color: #0ff;
+      color: #000;
+    }
+    .subscribe-form input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 280px;
+      margin-right: 10px;
+    }
+    .subscribe-form button {
+      padding: 10px 20px;
+      border: 2px solid #0ff;
+      background: transparent;
+      color: #0ff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .subscribe-form button:hover {
+      background: #0ff;
+      color: #000;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Skynet Logo" style="width: 120px; margin-bottom: 15px; animation: pulse 2s infinite;">
+    <h1>Skynet Coin ($SKY)</h1>
+    <p>AI meets Blockchain. Transparent. Fast. Unstoppable.</p>
+    <div class="buttons">
+      <a href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank">View on BscScan</a>
+      <a href="#" onclick="navigator.clipboard.writeText('0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8'); alert('Copied!');">Copy Contract</a>
+      <a href="#" onclick="addToken()">Add to MetaMask</a>
+      <a href="#" onclick="connectWallet()">Connect Wallet</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>Skynet Coin is more than a meme — it's a symbol of autonomy and machine intelligence.</p>
+  </section>
+
+  <section>
+    <h2>Tokenomics</h2>
+    <p>40% Liquidity • 30% Community • 15% Development • 10% Marketing • 5% CEX Reserve</p>
+  </section>
+
+  <section>
+    <h2>Roadmap</h2>
+    <p>Phase 1: Launch<br>Phase 2: Growth<br>Phase 3: Domination</p>
+  </section>
+
+  <section>
+    <h2>FAQ</h2>
+    <p><strong>Why SKY?</strong> It's fun, fast, and future-ready.</p>
+  </section>
+
+  <section>
+    <h2>Subscribe for Updates</h2>
+    <form action="https://formspree.io/f/moqgyqgg" method="POST" class="subscribe-form">
+      <input type="email" name="email" placeholder="Your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Live Chart</h2>
+    <iframe src="https://www.geckoterminal.com/bsc/pools/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8?embed=1"></iframe>
+  </section>
+
+  <footer>
+    &copy; 2024 Skynet Coin — Built by the community, for the future.
+  </footer>
+
+  <script>
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          alert('Connected: ' + accounts[0]);
+        } catch (err) {
+          alert('Wallet connection failed!');
+        }
+      } else {
+        alert('MetaMask not detected!');
+      }
+    }
+
+    async function addToken() {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8',
+              symbol: 'SKY',
+              decimals: 18,
+              image: 'logo.png'
+            },
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  </script>
+</body>
+</html>
