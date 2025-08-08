@@ -1,286 +1,250 @@
 
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Skynet Coin ($SKY) — AI × Blockchain</title>
-  <meta name="description" content="Skynet Coin ($SKY) — токен на BNB Chain, скорость, безопасность и AI-утилити.">
-  <meta name="keywords" content="Skynet Coin, SKY, crypto, DAO, NFT, Web3, AI">
-  <meta name="author" content="Skynet Team">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Skynet Coin ($SKY)">
-  <meta property="og:description" content="Skynet Coin ($SKY) — AI × Blockchain. Децентрализованный токен на BNB Chain c реальными AI-утилити.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="./social-preview.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Skynet Coin ($SKY)">
-  <meta name="twitter:description" content="AI × Blockchain. Fast. Secure. Decentralized.">
-  <meta name="twitter:image" content="./social-preview.jpg">
-
-  <link rel="icon" href="./favicon.svg">
-  <link rel="manifest" href="./site.webmanifest">
-  <link rel="canonical" href="https://example.com/">
-
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="stylesheet" href="./main.css">
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" defer></script>
-  <script src="./main.js" defer></script>
-<style>a.nav-link:visited{ color: var(--primary); }</style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title data-i18n="skynet_coin_sky_ai_blockchain">Skynet Coin ($SKY) — AI × Blockchain</title>
+<meta content="Skynet Coin ($SKY) — токен на BNB Chain, скорость, безопасность и AI-утилити." name="description"/>
+<meta content="Skynet Coin, SKY, crypto, DAO, NFT, Web3, AI" name="keywords"/>
+<meta content="Skynet Team" name="author"/>
+<!-- Open Graph / Twitter -->
+<meta content="Skynet Coin ($SKY)" property="og:title"/>
+<meta content="Skynet Coin ($SKY) — AI × Blockchain. Децентрализованный токен на BNB Chain c реальными AI-утилити." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://example.com/" property="og:url"/>
+<meta content="./social-preview.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Skynet Coin ($SKY)" name="twitter:title"/>
+<meta content="AI × Blockchain. Fast. Secure. Decentralized." name="twitter:description"/>
+<meta content="./social-preview.jpg" name="twitter:image"/>
+<link href="./favicon.svg" rel="icon"/>
+<link href="./site.webmanifest" rel="manifest"/>
+<link href="https://example.com/" rel="canonical"/>
+<link href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="./main.css" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script defer="" src="./main.js"></script>
+<style data-i18n="a_nav_link_visited_color_var_p">a.nav-link:visited{ color: var(--primary); }</style>
 </head>
 <body>
-  <!-- Parallax layer -->
-  <div id="parallax-bg" aria-hidden="true"></div>
-
-  <nav class="lang-switch" aria-label="Language switch">
-<button onclick="setLang('ru')">RU</button>
-    <button onclick="setLang('en')">EN</button>
-  </nav>
-
-  <nav id="topbar" class="reveal fade-up" aria-label="Main">
-    <div class="group actions">
-<button class="button" id="copyContractBtn" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">$SKY контракт</button>
+<!-- Parallax layer -->
+<div aria-hidden="true" id="parallax-bg"></div>
+<nav aria-label="Language switch" class="lang-switch">
+<button data-i18n="ru_2" onclick="setLang('ru')">RU</button>
+<button data-i18n="en" onclick="setLang('en')">EN</button>
+</nav>
+<nav aria-label="Main" class="reveal fade-up" id="topbar">
+<div class="group actions">
+<button class="button" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" data-i18n="sky" id="copyContractBtn">$SKY контракт</button>
 </div>
-    <div class="divider" aria-hidden="true"></div>
-    <div class="group navlinks">
-      <a href="#about" class="nav-link"><span data-i18n="nav_about">О проекте</span></a>
-      <a href="#tokenomics" class="nav-link"><span data-i18n="nav_tokenomics">Токеномика</span></a>
-      <a href="#roadmap" class="nav-link"><span data-i18n="nav_roadmap">Дорожная карта</span></a>
-      <a href="#community" class="nav-link"><span data-i18n="nav_community">Сообщество</span></a>
-      <a href="#airdrop" class="nav-link"><span data-i18n="nav_airdrop">Airdrop</span></a>
-    </div>
-  </nav>
-
+<div aria-hidden="true" class="divider"></div>
+<div class="group navlinks">
+<a class="nav-link" data-i18n="txt" href="#about"><span data-i18n="nav_about">О проекте</span></a>
+<a class="nav-link" data-i18n="txt_2" href="#tokenomics"><span data-i18n="nav_tokenomics">Токеномика</span></a>
+<a class="nav-link" data-i18n="txt_3" href="#roadmap"><span data-i18n="nav_roadmap">Дорожная карта</span></a>
+<a class="nav-link" data-i18n="txt_4" href="#community"><span data-i18n="nav_community">Сообщество</span></a>
+<a class="nav-link" data-i18n="airdrop" href="#airdrop"><span data-i18n="nav_airdrop">Airdrop</span></a>
+</div>
+</nav>
 <header class="reveal">
-    <img loading="lazy" decoding="async" id="site-logo" src="./logo.png" loading="lazy" alt="Skynet Coin logo">
-    <h1 data-i18n="hero_title">Будущее криптовалюты управляемое ИИ</h1>
-    <h2 data-i18n="hero_sub">Skynet Coin — синергия блокчейна и искусственного интеллекта</h2>
-    <p data-i18n="hero_p">Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.</p>
-    <div class="buttons">
-      <a class="button" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">BscScan</a>
+<img alt="" data-i18n-alt="skynet_coin_logo" decoding="async" id="site-logo" loading="lazy" src="./logo.png"/>
+<h1 data-i18n="hero_title">Будущее криптовалюты управляемое ИИ</h1>
+<h2 data-i18n="hero_sub">Skynet Coin — синергия блокчейна и искусственного интеллекта</h2>
+<p data-i18n="hero_p">Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.</p>
+<div class="buttons">
+<a class="button" data-i18n="bscscan" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" rel="noopener" target="_blank">BscScan</a>
 <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
-    </div>
-  </header>
-
-  <main>
-
-  <!-- Features section with animated particles background -->
-
-  <section id="features" class="reveal fade-up">
-    <div id="features-bg" aria-hidden="true"><canvas id="fx-canvas"></canvas></div>
-    <h2><span data-i18n="features_h2">Наши преимущества</span></h2>
-    <div class="features-grid">
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">
-          <!-- AI Integration -->
-          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M8 12h8M12 8v8"/>
-          </svg>
-        </div>
-        <h3 data-i18n=\"feature_1_title\">AI‑интеграция</h3>
-        <p data-i18n=\"feature_1_p\">Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
-      </article>
-
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">
-          <!-- Speed -->
-          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-            <path d="M21 3v4h-4"/>
-          </svg>
-        </div>
-        <h3 data-i18n=\"feature_2_title\">Скорость и комиссии</h3>
-        <p data-i18n=\"feature_2_p\">BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
-      </article>
-
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">
-          <!-- Shield -->
-          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <h3 data-i18n=\"feature_3_title\">Безопасность</h3>
-        <p data-i18n=\"feature_3_p\">Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
-      </article>
-
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">
-          <!-- Globe -->
-          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </div>
-        <h3>Децентрализация</h3>
-        <p>Голосование через DAO и участие сообщества в развитии экосистемы.</p>
-      </article>
-    </div>
-  </section>
-
-
-
-
-    <section id="about" class="reveal fade-left">
-      <h2>О проекте Skynet Coin</h2>
-      <p data-i18n="about_p1">Skynet Coin ($SKY) объединяет блокчейн и ИИ...</p>
-    </section>
-
-    <section id="tokenomics" class="reveal fade-right">
-      <h2><span data-i18n="about_h2"><span data-i18n="nav_tokenomics">Токеномика</span></span></h2>
-      <ul class="feature-list">
-        <li data-i18n="tokenomics_1">Общий объём: 1,000,000,000 SKY</li>
-        <li data-i18n="tokenomics_2">Ликвидность и биржи — 40%</li>
-        <li data-i18n="tokenomics_3">Развитие экосистемы — 30%</li>
-        <li data-i18n="tokenomics_4">Маркетинг и партнёрства — 20%</li>
-        <li data-i18n="tokenomics_5">Резервный фонд — 10%</li>
-      </ul>
-      <div class="buttons">
-        <a class="button" href="./skynetcoin_whitepaper.pdf" target="_blank" rel="noopener">Whitepaper</a>
-      </div>
-    </section>
-
-    <section id="roadmap" class="reveal fade-up">
-      <h2><span data-i18n="tokenomics_h2"><span data-i18n="nav_roadmap">Дорожная карта</span></span></h2>
-      <ul class="feature-list">
-        <li data-i18n="roadmap_1">Q1 2025 — Запуск токена и сайта</li>
-        <li data-i18n="roadmap_2">Q2 2025 — Листинг на DEX и запуск NFT‑платформы</li>
-        <li data-i18n="roadmap_3">Q3 2025 — Интеграция AI‑модулей и запуск DAO</li>
-        <li data-i18n="roadmap_4">Q4 2025 — Листинг на CEX и мобильное приложение</li>
-      </ul>
-    </section>
-
-    <section id="community" class="reveal fade-left">
-      <h2><span data-i18n="roadmap_h2">NFT / DAO / Utility</span></h2>
-      <ul class="feature-list">
-        <li data-i18n="nftdao_1">NFT с уникальными AI‑генерированными артами</li>
-        <li data-i18n="nftdao_2">Голосование в DAO за развитие проекта</li>
-        <li data-i18n="nftdao_3">AI‑инструменты для анализа рынка</li>
-        <li data-i18n="nftdao_4">Доступ к закрытым мероприятиям сообщества</li>
-      </ul>
-      <div class="buttons">
-        <a class="button" href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter</a>
-        <a class="button" href="https://t.me/yourchannel" target="_blank" rel="noopener">Telegram</a>
-        <a class="button" href="mailto:info@skynetcoin.io">Email</a>
-        <a class="button" href="https://github.com/SkynetCoin1" target="_blank" rel="noopener">GitHub</a>
-      </div>
-      <!-- CoinGecko price widget (replace id if your token is listed) -->
-      <div id="price-widget" class="reveal fade-up" style="margin-top:16px;">
-        <iframe src="https://www.coingecko.com/en/widgets/price-chart?locale=en&width=0&height=300&coin_id=1&ref=github_pages" title="Price widget" style="width:100%;height:320px;border:0;border-radius:12px;box-shadow:0 0 12px rgba(0,255,255,.35)"></iframe>
-        <div style="font-size:12px;opacity:.7;margin-top:4px">* Временно показываем демо-график. Заменим на ваш токен после листинга.</div>
-      </div>
-    </section>
-
-    
-  <section id="how-to-buy" class="reveal fade-up">
-    <h2><span data-i18n="community_h2">Как купить $SKY</span></h2>
-    <div class="steps-grid">
-      <article class="step-card">
-        <div class="icon" aria-hidden="true">
-          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"/>
-          </svg>
-        </div>
-        <h3>1. Установите MetaMask</h3>
-        <p>Создайте кошелёк и переключитесь на сеть <b>BNB Smart Chain</b>.</p>
-        <div class="buttons">
-          <a class="button" href="https://metamask.io/download/" target="_blank" rel="noopener">Скачать MetaMask</a>
-        </div>
-      </article>
-
-      <article class="step-card">
-        <div class="icon" aria-hidden="true">
-          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 1v22M1 12h22"/>
-          </svg>
-        </div>
-        <h3>2. Пополните BNB</h3>
-        <p>Купите немного <b>BNB</b> на бирже и переведите в свой MetaMask (BSC).</p>
-      </article>
-
-      <article class="step-card">
-        <div class="icon" aria-hidden="true">
-          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/>
-          </svg>
-        </div>
-        <h3>3. Обменяйте на $SKY</h3>
-        <p data-i18n="about_p1">Откройте PancakeSwap — адрес токена уже подставлен.</p>
-        <div class="buttons">
-          <a class="button" target="_blank" rel="noopener"
-             href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">PancakeSwap</a>
-        </div>
-      </article>
-
-      <article class="step-card">
-        <div class="icon" aria-hidden="true">
-          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 7l-8 10-5-5"/>
-          </svg>
-        </div>
-        <h3>4. Добавьте токен в кошелёк</h3>
-        <p>Чтобы видеть баланс $SKY, добавьте токен в MetaMask.</p>
-        <div class="buttons">
-          <button class="button" id="addToWalletBtn">Добавить $SKY в MetaMask</button>
-        </div>
-      </article>
-    </div>
-  
-      <div class="buy-tools">
-        <button id="copy-contract" class="button">Copy contract</button>
-        <button id="add-token" class="button button-outline">Add $SKY to MetaMask</button>
-        <a id="buy-sky" class="button" href="#" rel="noopener">Buy on PancakeSwap</a>
-      </div>
-    </section>
-
-  <section id="airdrop" class="reveal fade-right">
-      <h2><span data-i18n="howto_h2">Получите Airdrop</span></h2>
-      <p data-i18n="airdrop_p">Подпишитесь на наши соцсети и подключите кошелёк...</p>
-      <div class="buttons">
-        <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">PancakeSwap</a>
-        <a class="button" href="#"  id="claim-airdrop">Claim $SKY</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="reveal" data-i18n="footer">Контакты: info@skynetcoin.io</footer>
-
-  <div class="visually-hidden" id="disclaimer">
+</div>
+</header>
+<main>
+<!-- Features section with animated particles background -->
+<section class="reveal fade-up" id="features">
+<div aria-hidden="true" id="features-bg"><canvas id="fx-canvas"></canvas></div>
+<h2 data-i18n="txt_5"><span data-i18n="features_h2">Наши преимущества</span></h2>
+<div class="features-grid">
+<article class="feature-card">
+<div aria-hidden="true" class="icon">
+<!-- AI Integration -->
+<svg class="fx-icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="32">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M8 12h8M12 8v8"></path>
+</svg>
+</div>
+<h3 data-i18n='\"feature_1_title\"'>AI‑интеграция</h3>
+<p data-i18n='\"feature_1_p\"'>Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
+</article>
+<article class="feature-card">
+<div aria-hidden="true" class="icon">
+<!-- Speed -->
+<svg class="fx-icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="32">
+<path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+<path d="M21 3v4h-4"></path>
+</svg>
+</div>
+<h3 data-i18n='\"feature_2_title\"'>Скорость и комиссии</h3>
+<p data-i18n='\"feature_2_p\"'>BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
+</article>
+<article class="feature-card">
+<div aria-hidden="true" class="icon">
+<!-- Shield -->
+<svg class="fx-icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="32">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+</svg>
+</div>
+<h3 data-i18n='\"feature_3_title\"'>Безопасность</h3>
+<p data-i18n='\"feature_3_p\"'>Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
+</article>
+<article class="feature-card">
+<div aria-hidden="true" class="icon">
+<!-- Globe -->
+<svg class="fx-icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="32">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="2" x2="22" y1="12" y2="12"></line>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+</div>
+<h3 data-i18n="txt_6">Децентрализация</h3>
+<p data-i18n="dao">Голосование через DAO и участие сообщества в развитии экосистемы.</p>
+</article>
+</div>
+</section>
+<section class="reveal fade-left" id="about">
+<h2 data-i18n="skynet_coin">О проекте Skynet Coin</h2>
+<p data-i18n="about_p1">Skynet Coin ($SKY) объединяет блокчейн и ИИ...</p>
+</section>
+<section class="reveal fade-right" id="tokenomics">
+<h2 data-i18n="txt_7"><span data-i18n="about_h2"><span data-i18n="nav_tokenomics">Токеномика</span></span></h2>
+<ul class="feature-list">
+<li data-i18n="tokenomics_1">Общий объём: 1,000,000,000 SKY</li>
+<li data-i18n="tokenomics_2">Ликвидность и биржи — 40%</li>
+<li data-i18n="tokenomics_3">Развитие экосистемы — 30%</li>
+<li data-i18n="tokenomics_4">Маркетинг и партнёрства — 20%</li>
+<li data-i18n="tokenomics_5">Резервный фонд — 10%</li>
+</ul>
+<div class="buttons">
+<a class="button" data-i18n="whitepaper" href="./skynetcoin_whitepaper.pdf" rel="noopener" target="_blank">Whitepaper</a>
+</div>
+</section>
+<section class="reveal fade-up" id="roadmap">
+<h2 data-i18n="txt_8"><span data-i18n="tokenomics_h2"><span data-i18n="nav_roadmap">Дорожная карта</span></span></h2>
+<ul class="feature-list">
+<li data-i18n="roadmap_1">Q1 2025 — Запуск токена и сайта</li>
+<li data-i18n="roadmap_2">Q2 2025 — Листинг на DEX и запуск NFT‑платформы</li>
+<li data-i18n="roadmap_3">Q3 2025 — Интеграция AI‑модулей и запуск DAO</li>
+<li data-i18n="roadmap_4">Q4 2025 — Листинг на CEX и мобильное приложение</li>
+</ul>
+</section>
+<section class="reveal fade-left" id="community">
+<h2 data-i18n="nft_dao_utility"><span data-i18n="roadmap_h2">NFT / DAO / Utility</span></h2>
+<ul class="feature-list">
+<li data-i18n="nftdao_1">NFT с уникальными AI‑генерированными артами</li>
+<li data-i18n="nftdao_2">Голосование в DAO за развитие проекта</li>
+<li data-i18n="nftdao_3">AI‑инструменты для анализа рынка</li>
+<li data-i18n="nftdao_4">Доступ к закрытым мероприятиям сообщества</li>
+</ul>
+<div class="buttons">
+<a class="button" data-i18n="twitter" href="https://twitter.com/yourhandle" rel="noopener" target="_blank">Twitter</a>
+<a class="button" data-i18n="telegram" href="https://t.me/yourchannel" rel="noopener" target="_blank">Telegram</a>
+<a class="button" data-i18n="email" href="mailto:info@skynetcoin.io">Email</a>
+<a class="button" data-i18n="github" href="https://github.com/SkynetCoin1" rel="noopener" target="_blank">GitHub</a>
+</div>
+<!-- CoinGecko price widget (replace id if your token is listed) -->
+<div class="reveal fade-up" id="price-widget" style="margin-top:16px;">
+<iframe src="https://www.coingecko.com/en/widgets/price-chart?locale=en&amp;width=0&amp;height=300&amp;coin_id=1&amp;ref=github_pages" style="width:100%;height:320px;border:0;border-radius:12px;box-shadow:0 0 12px rgba(0,255,255,.35)" title="Price widget"></iframe>
+<div data-i18n="txt_9" style="font-size:12px;opacity:.7;margin-top:4px">* Временно показываем демо-график. Заменим на ваш токен после листинга.</div>
+</div>
+</section>
+<section class="reveal fade-up" id="how-to-buy">
+<h2 data-i18n="sky_2"><span data-i18n="community_h2">Как купить $SKY</span></h2>
+<div class="steps-grid">
+<article class="step-card">
+<div aria-hidden="true" class="icon">
+<svg class="fx-icon" fill="none" height="30" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="30">
+<path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"></path>
+</svg>
+</div>
+<h3 data-i18n="1_metamask">1. Установите MetaMask</h3>
+<p>Создайте кошелёк и переключитесь на сеть <b data-i18n="bnb_smart_chain">BNB Smart Chain</b>.</p>
+<div class="buttons">
+<a class="button" data-i18n="metamask" href="https://metamask.io/download/" rel="noopener" target="_blank">Скачать MetaMask</a>
+</div>
+</article>
+<article class="step-card">
+<div aria-hidden="true" class="icon">
+<svg class="fx-icon" fill="none" height="30" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="30">
+<path d="M12 1v22M1 12h22"></path>
+</svg>
+</div>
+<h3 data-i18n="2_bnb">2. Пополните BNB</h3>
+<p>Купите немного <b data-i18n="bnb">BNB</b> на бирже и переведите в свой MetaMask (BSC).</p>
+</article>
+<article class="step-card">
+<div aria-hidden="true" class="icon">
+<svg class="fx-icon" fill="none" height="30" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="30">
+<path d="M3 12h18M12 3v18"></path><circle cx="12" cy="12" r="9"></circle>
+</svg>
+</div>
+<h3 data-i18n="3_sky">3. Обменяйте на $SKY</h3>
+<p data-i18n="about_p1">Откройте PancakeSwap — адрес токена уже подставлен.</p>
+<div class="buttons">
+<a class="button" data-i18n="pancakeswap" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" rel="noopener" target="_blank">PancakeSwap</a>
+</div>
+</article>
+<article class="step-card">
+<div aria-hidden="true" class="icon">
+<svg class="fx-icon" fill="none" height="30" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="30">
+<path d="M20 7l-8 10-5-5"></path>
+</svg>
+</div>
+<h3 data-i18n="4">4. Добавьте токен в кошелёк</h3>
+<p data-i18n="sky_metamask">Чтобы видеть баланс $SKY, добавьте токен в MetaMask.</p>
+<div class="buttons">
+<button class="button" data-i18n="sky_metamask_2" id="addToWalletBtn">Добавить $SKY в MetaMask</button>
+</div>
+</article>
+</div>
+<div class="buy-tools">
+<button class="button" data-i18n="copy_contract" id="copy-contract">Copy contract</button>
+<button class="button button-outline" data-i18n="add_sky_to_metamask" id="add-token">Add $SKY to MetaMask</button>
+<a class="button" data-i18n="buy_on_pancakeswap" href="#" id="buy-sky" rel="noopener">Buy on PancakeSwap</a>
+</div>
+</section>
+<section class="reveal fade-right" id="airdrop">
+<h2 data-i18n="airdrop_2"><span data-i18n="howto_h2">Получите Airdrop</span></h2>
+<p data-i18n="airdrop_p">Подпишитесь на наши соцсети и подключите кошелёк...</p>
+<div class="buttons">
+<a class="button" data-i18n="pancakeswap_2" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" rel="noopener" target="_blank">PancakeSwap</a>
+<a class="button" data-i18n="claim_sky" href="#" id="claim-airdrop">Claim $SKY</a>
+</div>
+</section>
+</main>
+<footer class="reveal" data-i18n="footer">Контакты: info@skynetcoin.io</footer>
+<div class="visually-hidden" data-i18n="txt_10" id="disclaimer">
     Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.
   </div>
-
-  <button id="backToTop" aria-label="Наверх">↑</button>
-
-
-  <!-- Buy $SKY Modal -->
-  <div id="buyModal"
-     data-bsc-helper="true" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
-    <div class="modal-dialog">
-      <h3 id="buyTitle">Как купить $SKY</h3>
-      <ol class="steps">
-        <li>Установите и откройте MetaMask (сеть <strong>BNB Smart Chain</strong>).</li>
-        <li>Нажмите «Подключить кошелёк» на сайте.</li>
-        <li>Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.</li>
-      </ol>
-      <div class="buttons">
-        <a class="button" target="_blank" rel="noopener"
-           href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">Открыть PancakeSwap</a>
-        <button class="button" id="closeBuyModal">Закрыть</button>
-      <div style="margin-top:10px;"><button class="button" id="addBSCBtnModal">Добавить сеть BSC</button></div>
-    </div>
-  </div>
-
-  <!-- Preloader -->
-  <div id="preloader" aria-hidden="true">
-    <div class="spinner"></div>
-  </div>
-
-
-<script>
+<button aria-label="Наверх" data-i18n="txt_11" id="backToTop">↑</button>
+<!-- Buy $SKY Modal -->
+<div aria-hidden="true" aria-labelledby="buyTitle" class="modal" data-bsc-helper="true" id="buyModal" role="dialog">
+<div class="modal-dialog">
+<h3 data-i18n="sky_3" id="buyTitle">Как купить $SKY</h3>
+<ol class="steps">
+<li>Установите и откройте MetaMask (сеть <strong data-i18n="bnb_smart_chain_2">BNB Smart Chain</strong>).</li>
+<li data-i18n="txt_12">Нажмите «Подключить кошелёк» на сайте.</li>
+<li data-i18n="pancakeswap_3">Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.</li>
+</ol>
+<div class="buttons">
+<a class="button" data-i18n="pancakeswap_4" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" rel="noopener" target="_blank">Открыть PancakeSwap</a>
+<button class="button" data-i18n="txt_13" id="closeBuyModal">Закрыть</button>
+<div data-i18n="bsc" style="margin-top:10px;"><button class="button" data-i18n="bsc_2" id="addBSCBtnModal">Добавить сеть BSC</button></div>
+</div>
+</div>
+<!-- Preloader -->
+<div aria-hidden="true" id="preloader">
+<div class="spinner"></div>
+</div>
+<script data-i18n="document_addeventlistener_domc">
 document.addEventListener('DOMContentLoaded', function(){
   function removeByText(txt){
     const candidates = Array.from(document.querySelectorAll('a,button'));
@@ -294,6 +258,5 @@ document.addEventListener('DOMContentLoaded', function(){
   removeByText('Подключить кошелёк');
 });
 </script>
-
-</body>
+</div></body>
 </html>
