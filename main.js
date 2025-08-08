@@ -22,9 +22,9 @@ const observer = new IntersectionObserver(entries => {
 
 // ===== Parallax (background moves slower than content) =====
 function parallaxTick(){
-  const y = Math.round(window.scrollY * 0.2);
+  const y = window.scrollY * 0.2; // 0.2 = лёгкий параллакс
   const bg = document.getElementById('parallax-bg');
-  if(bg) bg.style.backgroundPosition = 'center ' + (-y) + 'px';
+  if(bg) bg.style.transform = 'translateY(' + y + 'px)';
 }
 window.addEventListener('scroll', parallaxTick);
 
@@ -166,16 +166,3 @@ window.addEventListener('scroll', () => {
   backBtn.style.display = (window.scrollY > 600) ? 'block' : 'none';
 });
 backBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-
-// ===== Copy contract to clipboard =====
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('copyContractBtn');
-  if (!btn) return;
-  btn.addEventListener('click', async () => {
-    try{
-      await navigator.clipboard.writeText(btn.dataset.contract);
-      btn.textContent = 'Скопировано ✓';
-      setTimeout(()=> btn.textContent = '$SKY контракт', 1200);
-    }catch(e){ alert('Не удалось скопировать'); }
-  });
-});

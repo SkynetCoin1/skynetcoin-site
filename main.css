@@ -21,10 +21,10 @@ body{
 #parallax-bg{
   position:fixed;
   inset:0;
-  background:url('./background.png') center/110% no-repeat;
+  background:url('./background.png') center/cover no-repeat;
   z-index:-1;
   will-change:transform;
-  background-attachment: fixed; background-position: center 0;
+  transform:translateY(0);
 }
 
 header, section, footer{
@@ -144,22 +144,3 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
   transition: transform .2s, background .2s, color .2s;
 }
 #backToTop:hover{ background: var(--primary); color:#000; transform: translateY(-2px); }
-
-/* ===== Fixed CTA bar ===== */
-#cta-bar{
-  position: sticky;
-  top: 8px;
-  display: inline-flex;
-  gap: 8px;
-  padding: 8px 10px;
-  background: rgba(0,0,0,0.6);
-  border: 2px solid var(--primary);
-  border-radius: 14px;
-  box-shadow: 0 0 12px rgba(0,255,255,.35);
-  z-index: 910;
-  backdrop-filter: blur(6px);
-}
-@media (max-width:768px){
-  #cta-bar{ display:flex; flex-wrap:wrap; justify-content:center; }
-  #cta-bar .button{ flex: 1 1 140px; }
-}
