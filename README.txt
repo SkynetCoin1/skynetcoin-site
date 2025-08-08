@@ -1,14 +1,10 @@
-SKYNETCOIN SITE (FLAT VERSION)
---------------------------------
-Файлы положи в корень репозитория GitHub (без папок).
-Что заменить:
-- logo.png — твой логотип (PNG).
-- background.png — фон сайта (PNG/JPG).
-- main.js — вверху поменяй ссылки соцсетей и email (window.SKY.SOCIALS, CONTACT_EMAIL).
-- index.html — замени example.com в og:url и canonical на твой домен/ссылку GitHub Pages.
-- при желании включи GA4 (ENABLE_GA4=true и подставь GA4_ID).
+SKYNETCOIN — ПЛОСКАЯ СБОРКА НА ОСНОВЕ ТВОЕГО index.html
+---------------------------------------------------------
+Файлы клади в корень репозитория (без папок).
+Что нужно поменять вручную:
+1) logo.png — твой логотип (PNG), background.png — фон сайта.
+2) В main.js в объекте window.SKY замени ссылки соцсетей и CONTACT_EMAIL.
+3) В index.html замени https://example.com/ в og:url и canonical на реальную ссылку Pages.
+4) Если нужна аналитика GA4 — включи ENABLE_GA4=true и подставь GA4_ID.
 
-Деплой:
-1) Залей ВСЕ эти файлы в репозиторий.
-2) Settings → Pages → Source: Branch = main, Folder = /(root).
-3) Жми Save — через пару минут ссылка заработает.
+После загрузки в репо: Settings → Pages → Source: main / (root) → Save.

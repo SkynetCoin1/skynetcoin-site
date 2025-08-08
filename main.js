@@ -18,7 +18,7 @@ window.SKY = {
 // ===== Reveal on scroll =====
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target);} });
-}, {threshold:0.1});
+}, {threshold:0.1, rootMargin:'0px 0px -10% 0px'});
 
 // ===== Parallax (background moves slower than content) =====
 function parallaxTick(){

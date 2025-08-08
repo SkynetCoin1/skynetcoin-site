@@ -71,3 +71,19 @@ ul.feature-list li{margin:8px 0}
   .button{display:block;margin:12px auto;width:90%}
 }
 .visually-hidden{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
+
+/* ==== Enhanced reveal variants ==== */
+.reveal.fade-up   {opacity:0;transform:translateY(24px);}
+.reveal.fade-up.active{opacity:1;transform:none}
+
+.reveal.fade-left {opacity:0;transform:translateX(-24px);}
+.reveal.fade-left.active{opacity:1;transform:none}
+
+.reveal.fade-right{opacity:0;transform:translateX(24px);}
+.reveal.fade-right.active{opacity:1;transform:none}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  .reveal, .reveal.fade-up, .reveal.fade-left, .reveal.fade-right { opacity: 1 !important; transform: none !important; }
+}
