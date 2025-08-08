@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({behavior:'smooth', block:'start'});
-    });
+    }));
   });
 });
 
@@ -182,11 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== Buy Modal =====
 document.addEventListener('DOMContentLoaded', () => {
-  const openBtn = document.getElementById('openBuyModal');
+  const openBtns = document.querySelectorAll('[id^="openBuyModal"]');
   const closeBtn = document.getElementById('closeBuyModal');
   const modal = document.getElementById('buyModal');
-  if(openBtn && modal){
-    openBtn.addEventListener('click', () => {
+  if(openBtns && openBtns.length && modal){
+    openBtns.forEach(openBtn => openBtn.addEventListener('click', () => {
       modal.classList.add('show');
       modal.setAttribute('aria-hidden','false');
     });
@@ -367,3 +367,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btn) btn.addEventListener('click', connectWallet);
 });
 
+
+
+// ===== Multiple connect buttons support =====
+document.addEventListener('DOMContentLoaded', () => {
+  const btn1 = document.getElementById('connectWalletBtn');
+  const btn2 = document.getElementById('connectWalletBtn2');
+  if (btn1) btn1.addEventListener('click', connectWallet);
+  if (btn2) btn2.addEventListener('click', connectWallet);
+});
