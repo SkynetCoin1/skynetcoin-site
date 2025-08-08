@@ -139,3 +139,30 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 });
+
+// ===== Scrollspy for sticky nav =====
+const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
+const sectionMap = navLinks.map(link => {
+  const id = link.getAttribute('href');
+  return { id, link, el: document.querySelector(id) };
+}).filter(x => x.el);
+
+const spyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const item = sectionMap.find(s => s.el === entry.target);
+    if (!item) return;
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      item.link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+
+sectionMap.forEach(s => spyObserver.observe(s.el));
+
+// ===== Back to top =====
+const backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backBtn.style.display = (window.scrollY > 600) ? 'block' : 'none';
+});
+backBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));

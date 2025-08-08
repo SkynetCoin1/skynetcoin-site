@@ -100,3 +100,47 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
   box-shadow: 0 0 0 3px rgba(0,255,255,.35), 0 0 12px var(--primary);
   transform: translateY(-1px) scale(1.01);
 }
+
+/* ===== Sticky top nav ===== */
+#topnav{
+  position: sticky;
+  top: 8px;
+  margin: 10px auto;
+  display: inline-flex;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.6);
+  border: 2px solid var(--primary);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(0,255,255,.4);
+  backdrop-filter: blur(6px);
+  z-index: 900;
+}
+#topnav .nav-link{
+  color: var(--primary);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: background .2s, color .2s, transform .2s;
+}
+#topnav .nav-link:hover{ background: var(--primary); color: #000; transform: translateY(-1px); }
+#topnav .nav-link.active{ background: var(--primary); color:#000; box-shadow: 0 0 10px var(--primary); }
+
+/* ===== Back to top button ===== */
+#backToTop{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 2px solid var(--primary);
+  background: rgba(0,0,0,0.6);
+  color: var(--primary);
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 0 12px rgba(0,255,255,.35);
+  z-index: 950;
+  transition: transform .2s, background .2s, color .2s;
+}
+#backToTop:hover{ background: var(--primary); color:#000; transform: translateY(-2px); }
