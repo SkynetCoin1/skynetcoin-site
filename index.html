@@ -35,6 +35,8 @@
   <div id="parallax-bg" aria-hidden="true"></div>
 
   <nav class="lang-switch" aria-label="Language switch">
+    <button id="connect-wallet" class="button button-outline">Connect Wallet</button>
+
     <button onclick="setLang('ru')">RU</button>
     <button onclick="setLang('en')">EN</button>
   </nav>
@@ -43,7 +45,7 @@
     <div class="group actions">
       <button class="button" id="openBuyModal">Купить $SKY</button>
       <button class="button" id="copyContractBtn" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">$SKY контракт</button>
-      <button class="button" onclick="connectWallet()" id="connectWalletBtn">Подключить кошелёк</button>
+      <button class="button" onclick="connectWallet()">Подключить кошелёк</button>
     </div>
     <div class="divider" aria-hidden="true"></div>
     <div class="group navlinks">
@@ -62,8 +64,8 @@
     <p data-i18n="hero_p">Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.</p>
     <div class="buttons">
       <a class="button" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">BscScan</a>
-      <button class="button" id="openBuyModal2">Купить $SKY</button>
-      <a class="button" href="#" onclick="connectWallet()" id="connectWalletLink">Подключить кошелёк</a>
+      <button class="button" id="openBuyModal">Купить $SKY</button>
+      <a class="button" href="#" onclick="connectWallet()">Подключить кошелёк</a>
       <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
     </div>
   </header>
@@ -233,14 +235,20 @@
         </div>
       </article>
     </div>
-  </section>
+  
+      <div class="buy-tools">
+        <button id="copy-contract" class="button">Copy contract</button>
+        <button id="add-token" class="button button-outline">Add $SKY to MetaMask</button>
+        <a id="buy-sky" class="button" href="#" rel="noopener">Buy on PancakeSwap</a>
+      </div>
+    </section>
 
   <section id="airdrop" class="reveal fade-right">
       <h2>Получите Airdrop</h2>
       <p data-i18n="airdrop_p">Подпишитесь на наши соцсети и подключите кошелёк...</p>
       <div class="buttons">
         <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">PancakeSwap</a>
-        <a class="button" href="#" aria-disabled="true" title="Скоро">Claim $SKY</a>
+        <a class="button" href="#"  id="claim-airdrop">Claim $SKY</a>
       </div>
     </section>
   </main>

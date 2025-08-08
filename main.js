@@ -115,6 +115,124 @@ async function connectWallet(){
 }
 window.connectWallet = connectWallet;
 
+// ==== SKY config (added) ====
+(function initSkyConfig(){
+  const DEFAULTS = {
+    ENABLE_GA4: false,
+    ENABLE_AIRDROP: false,
+    ENABLE_BUY: true,
+    CONTACT_EMAIL: "",
+    CHAIN_ID: 56, // BNB Chain mainnet
+    TOKEN: {
+      address: "0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8",
+      symbol: "SKY",
+      decimals: 18,
+      image: "./logo.png"
+    },
+    SOCIALS: {
+      twitter: "https://twitter.com/yourhandle",
+      telegram: "https://t.me/yourchannel",
+      github: "https://github.com/SkynetCoin1",
+      website: "https://example.com/"
+    },
+    PANCAKE_BASE: "https://pancakeswap.finance/swap?outputCurrency="
+  };
+  window.SKY = Object.assign({}, DEFAULTS, window.SKY||{});
+  window.SKY.TOKEN = Object.assign({}, DEFAULTS.TOKEN, (window.SKY||{}).TOKEN||{});
+  window.SKY.SOCIALS = Object.assign({}, DEFAULTS.SOCIALS, (window.SKY||{}).SOCIALS||{});
+})();
+
+
+// ==== Wallet helpers (added) ====
+async function ensureNetwork(){
+  if(!window.ethereum) return;
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const net = await provider.getNetwork();
+  if(net.chainId === Number(window.SKY.CHAIN_ID)) return true;
+  try {
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: "0x"+Number(window.SKY.CHAIN_ID).toString(16) }]
+    });
+    return true;
+  } catch(e){
+    // если сеть не добавлена — BNB Chain mainnet
+    if(e && e.code === 4902){
+      try{
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: "0x38",
+            chainName: "BNB Smart Chain",
+            nativeCurrency: { name:"BNB", symbol:"BNB", decimals:18 },
+            rpcUrls: ["https://bsc-dataseed.binance.org/"],
+            blockExplorerUrls: ["https://bscscan.com"]
+          }]
+        });
+        return true;
+      }catch(err){ console.warn(err); }
+    }
+    console.warn(e);
+    return false;
+  }
+}
+
+async function addTokenToWallet(){
+  if(!window.ethereum) { alert("MetaMask не найден"); return; }
+  const t = window.SKY.TOKEN;
+  try{
+    await window.ethereum.request({
+      method: "wallet_watchAsset",
+      params: { type: "ERC20", options: { address: t.address, symbol: t.symbol, decimals: Number(t.decimals), image: t.image } }
+    });
+  }catch(e){ console.warn(e); alert("Не удалось добавить токен в кошелёк"); }
+}
+
+function copyContract(){
+  const t = window.SKY.TOKEN;
+  navigator.clipboard.writeText(t.address).then(()=>{
+    alert("Контракт скопирован: "+t.address);
+  }, ()=>alert("Не удалось скопировать"));
+}
+
+function buySky(){
+  if(!window.SKY.ENABLE_BUY){ alert("Покупка временно отключена"); return; }
+  const url = window.SKY.PANCAKE_BASE + encodeURIComponent(window.SKY.TOKEN.address);
+  window.open(url, "_blank", "noopener");
+}
+
+async function claimAirdrop(){
+  if(!window.SKY.ENABLE_AIRDROP){ alert("Airdrop скоро"); return; }
+  // Заглушка под реальную реализацию с подписью и бекендом
+  try{
+    const ctx = await connectWallet();
+    if(!ctx) return;
+    const msg = "SkynetCoin Airdrop claim for " + ctx.address;
+    const sig = await ctx.signer.signMessage(msg);
+    console.log("airdrop-signature:", sig);
+    alert("Заявка на airdrop отправлена (демо).");
+  }catch(e){ console.warn(e); alert("Не удалось выполнить claim"); }
+}
+
+function initButtons(){
+  const c = document.getElementById("connect-wallet");
+  if(c) c.addEventListener("click", async ()=>{
+    const ok = await ensureNetwork();
+    if(ok) await connectWallet();
+  });
+  const b = document.getElementById("buy-sky");
+  if(b) b.addEventListener("click", (e)=>{ e.preventDefault(); buySky(); });
+  const a = document.getElementById("claim-airdrop");
+  if(a) a.addEventListener("click", (e)=>{ e.preventDefault(); claimAirdrop(); });
+  const cc = document.getElementById("copy-contract");
+  if(cc) cc.addEventListener("click", copyContract);
+  const at = document.getElementById("add-token");
+  if(at) at.addEventListener("click", addTokenToWallet);
+}
+
+document.addEventListener("DOMContentLoaded", initButtons);
+
+
 // ===== GA4 (disabled by default) =====
 (function initGA(){
   if(!window.SKY.ENABLE_GA4 || !window.SKY.GA4_ID) return;
@@ -182,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== Buy Modal =====
 document.addEventListener('DOMContentLoaded', () => {
-  const openBtns = document.querySelectorAll('#openBuyModal, #openBuyModal2');
+  const openBtn = document.getElementById('openBuyModal');
   const closeBtn = document.getElementById('closeBuyModal');
   const modal = document.getElementById('buyModal');
   if(openBtn && modal){
@@ -367,12 +485,3 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btn) btn.addEventListener('click', connectWallet);
 });
 
-
-
-// Support anchor-based connect button with preventDefault
-document.addEventListener('DOMContentLoaded', () => {
-  const link = document.getElementById('connectWalletLink');
-  if (link) {
-    link.addEventListener('click', (e) => { e.preventDefault(); connectWallet(); });
-  }
-});
