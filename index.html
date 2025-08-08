@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="./main.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" defer></script>
   <script src="./main.js" defer></script>
+<style>a.nav-link:visited{ color: var(--primary); }</style>
 </head>
 <body>
   <!-- Parallax layer -->
@@ -68,6 +69,66 @@
   </header>
 
   <main>
+
+  <!-- Features section with animated particles background -->
+
+  <section id="features" class="reveal fade-up">
+    <div id="features-bg" aria-hidden="true"><canvas id="fx-canvas"></canvas></div>
+    <h2>Наши преимущества</h2>
+    <div class="features-grid">
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">
+          <!-- AI Integration -->
+          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 12h8M12 8v8"/>
+          </svg>
+        </div>
+        <h3>AI‑интеграция</h3>
+        <p>Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">
+          <!-- Speed -->
+          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+            <path d="M21 3v4h-4"/>
+          </svg>
+        </div>
+        <h3>Скорость и комиссии</h3>
+        <p>BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">
+          <!-- Shield -->
+          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Безопасность</h3>
+        <p>Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">
+          <!-- Globe -->
+          <svg class="fx-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>Децентрализация</h3>
+        <p>Голосование через DAO и участие сообщества в развитии экосистемы.</p>
+      </article>
+    </div>
+  </section>
+
+
+
+
     <section id="about" class="reveal fade-left">
       <h2>О проекте Skynet Coin</h2>
       <p data-i18n="about_p1">Skynet Coin ($SKY) объединяет блокчейн и ИИ...</p>
@@ -118,7 +179,63 @@
       </div>
     </section>
 
-    <section id="airdrop" class="reveal fade-right">
+    
+  <section id="how-to-buy" class="reveal fade-up">
+    <h2>Как купить $SKY</h2>
+    <div class="steps-grid">
+      <article class="step-card">
+        <div class="icon" aria-hidden="true">
+          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"/>
+          </svg>
+        </div>
+        <h3>1. Установите MetaMask</h3>
+        <p>Создайте кошелёк и переключитесь на сеть <b>BNB Smart Chain</b>.</p>
+        <div class="buttons">
+          <a class="button" href="https://metamask.io/download/" target="_blank" rel="noopener">Скачать MetaMask</a>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <div class="icon" aria-hidden="true">
+          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1v22M1 12h22"/>
+          </svg>
+        </div>
+        <h3>2. Пополните BNB</h3>
+        <p>Купите немного <b>BNB</b> на бирже и переведите в свой MetaMask (BSC).</p>
+      </article>
+
+      <article class="step-card">
+        <div class="icon" aria-hidden="true">
+          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/>
+          </svg>
+        </div>
+        <h3>3. Обменяйте на $SKY</h3>
+        <p>Откройте PancakeSwap — адрес токена уже подставлен.</p>
+        <div class="buttons">
+          <a class="button" target="_blank" rel="noopener"
+             href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">PancakeSwap</a>
+        </div>
+      </article>
+
+      <article class="step-card">
+        <div class="icon" aria-hidden="true">
+          <svg class="fx-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 7l-8 10-5-5"/>
+          </svg>
+        </div>
+        <h3>4. Добавьте токен в кошелёк</h3>
+        <p>Чтобы видеть баланс $SKY, добавьте токен в MetaMask.</p>
+        <div class="buttons">
+          <button class="button" id="addToWalletBtn">Добавить $SKY в MetaMask</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="airdrop" class="reveal fade-right">
       <h2>Получите Airdrop</h2>
       <p data-i18n="airdrop_p">Подпишитесь на наши соцсети и подключите кошелёк...</p>
       <div class="buttons">
@@ -138,7 +255,8 @@
 
 
   <!-- Buy $SKY Modal -->
-  <div id="buyModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
+  <div id="buyModal"
+     data-bsc-helper="true" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
     <div class="modal-dialog">
       <h3 id="buyTitle">Как купить $SKY</h3>
       <ol class="steps">
@@ -150,7 +268,7 @@
         <a class="button" target="_blank" rel="noopener"
            href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">Открыть PancakeSwap</a>
         <button class="button" id="closeBuyModal">Закрыть</button>
-      </div>
+      <div style="margin-top:10px;"><button class="button" id="addBSCBtnModal">Добавить сеть BSC</button></div>
     </div>
   </div>
 
