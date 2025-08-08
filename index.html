@@ -28,7 +28,6 @@
   <link rel="stylesheet" href="./main.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" defer></script>
   <script src="./main.js" defer></script>
-<style>a.nav-link:visited{ color: var(--primary); }</style>
 </head>
 <body>
   <!-- Parallax layer -->
@@ -39,66 +38,34 @@
     <button onclick="setLang('en')">EN</button>
   </nav>
 
-  <nav id="topbar" class="reveal fade-up" aria-label="Main">
-    <div class="group actions">
-      <button class="button" id="openBuyModal">Купить $SKY</button>
-      <button class="button" id="copyContractBtn" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">$SKY контракт</button>
-      <button class="button" onclick="connectWallet()">Подключить кошелёк</button>
-    </div>
-    <div class="divider" aria-hidden="true"></div>
-    <div class="group navlinks">
-      <a href="#about" class="nav-link">О проекте</a>
-      <a href="#tokenomics" class="nav-link">Токеномика</a>
-      <a href="#roadmap" class="nav-link">Дорожная карта</a>
-      <a href="#community" class="nav-link">Сообщество</a>
-      <a href="#airdrop" class="nav-link">Airdrop</a>
-    </div>
+  <div id="cta-bar" class="reveal fade-up" role="region" aria-label="Quick actions">
+    <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">Купить $SKY</a>
+    <button class="button" id="copyContractBtn" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" aria-label="Скопировать адрес контракта">$SKY контракт</button>
+    <button class="button" onclick="connectWallet()" aria-label="Подключить кошелёк">Подключить кошелёк</button>
+  </div>
+
+  <nav id="topnav" class="reveal fade-up" aria-label="Main">
+    <a href="#about"   class="nav-link">О проекте</a>
+    <a href="#tokenomics" class="nav-link">Токеномика</a>
+    <a href="#roadmap" class="nav-link">Дорожная карта</a>
+    <a href="#community" class="nav-link">Сообщество</a>
+    <a href="#airdrop" class="nav-link">Airdrop</a>
   </nav>
 
-<header class="reveal">
+  <header class="reveal">
     <img id="site-logo" src="./logo.png" loading="lazy" alt="Skynet Coin logo">
     <h1 data-i18n="hero_title">Будущее криптовалюты управляемое ИИ</h1>
     <h2 data-i18n="hero_sub">Skynet Coin — синергия блокчейна и искусственного интеллекта</h2>
     <p data-i18n="hero_p">Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.</p>
     <div class="buttons">
       <a class="button" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">BscScan</a>
-      <button class="button" id="openBuyModal">Купить $SKY</button>
+      <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">Купить $SKY</a>
       <a class="button" href="#" onclick="connectWallet()">Подключить кошелёк</a>
       <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
     </div>
   </header>
 
   <main>
-
-  <!-- Features section with animated particles background -->
-  <section id="features" class="reveal fade-up">
-    <div id="features-bg" aria-hidden="true"><canvas id="fx-canvas"></canvas></div>
-    <h2>Наши преимущества</h2>
-    <div class="features-grid">
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">🤖</div>
-        <h3>AI‑интеграция</h3>
-        <p>Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
-      </article>
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">⚡</div>
-        <h3>Скорость и комиссии</h3>
-        <p>BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
-      </article>
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">🛡️</div>
-        <h3>Безопасность</h3>
-        <p>Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
-      </article>
-      <article class="feature-card">
-        <div class="icon" aria-hidden="true">🌐</div>
-        <h3>Децентрализация</h3>
-        <p>Голосование через DAO и участие сообщества в развитии экосистемы.</p>
-      </article>
-    </div>
-  </section>
-
-
     <section id="about" class="reveal fade-left">
       <h2>О проекте Skynet Coin</h2>
       <p data-i18n="about_p1">Skynet Coin ($SKY) объединяет блокчейн и ИИ...</p>
@@ -166,29 +133,6 @@
   </div>
 
   <button id="backToTop" aria-label="Наверх">↑</button>
-
-
-  <!-- Buy $SKY Modal -->
-  <div id="buyModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
-    <div class="modal-dialog">
-      <h3 id="buyTitle">Как купить $SKY</h3>
-      <ol class="steps">
-        <li>Установите и откройте MetaMask (сеть <strong>BNB Smart Chain</strong>).</li>
-        <li>Нажмите «Подключить кошелёк» на сайте.</li>
-        <li>Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.</li>
-      </ol>
-      <div class="buttons">
-        <a class="button" target="_blank" rel="noopener"
-           href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">Открыть PancakeSwap</a>
-        <button class="button" id="closeBuyModal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Preloader -->
-  <div id="preloader" aria-hidden="true">
-    <div class="spinner"></div>
-  </div>
 
 </body>
 </html>
