@@ -255,7 +255,8 @@
 
 
   <!-- Buy $SKY Modal -->
-  <div id="buyModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
+  <div id="buyModal"
+     data-bsc-helper="true" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
     <div class="modal-dialog">
       <h3 id="buyTitle">Как купить $SKY</h3>
       <ol class="steps">
@@ -267,7 +268,7 @@
         <a class="button" target="_blank" rel="noopener"
            href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">Открыть PancakeSwap</a>
         <button class="button" id="closeBuyModal">Закрыть</button>
-      </div>
+      <div style="margin-top:10px;"><button class="button" id="addBSCBtnModal">Добавить сеть BSC</button></div>
     </div>
   </div>
 

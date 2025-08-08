@@ -274,3 +274,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }catch(e){ console.error(e); alert('Не удалось добавить токен'); }
   });
 });
+
+
+// ===== Add BSC network (also for modal) =====
+document.addEventListener('DOMContentLoaded', () => {
+  function addBSC(){
+    if(!window.ethereum){ alert('MetaMask не найден'); return; }
+    window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: '0x38' }]
+    }).catch((switchError) => {
+      if (switchError.code === 4902) {
+        window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: '0x38',
+            chainName: 'BNB Smart Chain',
+            nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+            rpcUrls: ['https://bsc-dataseed.binance.org/'],
+            blockExplorerUrls: ['https://bscscan.com']
+          }]
+        });
+      } else {
+        console.error(switchError);
+      }
+    });
+  }
+  const btn1 = document.getElementById('addBSCBtn');
+  if(btn1) btn1.addEventListener('click', addBSC);
+  const btn2 = document.getElementById('addBSCBtnModal');
+  if(btn2) btn2.addEventListener('click', addBSC);
+});
