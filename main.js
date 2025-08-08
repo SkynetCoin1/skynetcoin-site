@@ -306,27 +306,64 @@ document.addEventListener('DOMContentLoaded', () => {
   if(btn2) btn2.addEventListener('click', addBSC);
 });
 
-// ===== Unify hero and topbar buttons =====
-document.addEventListener('DOMContentLoaded', () => {
-  // Open Buy modal from any button id
-  const buyCandidates = ['buyBtn','openBuyModalHero','openBuyModal'];
-  for (const id of buyCandidates){
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const modal = document.getElementById('buyModal');
-        if (modal){ modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
-      });
+
+// ===== Robust MetaMask connect with BSC switch/add =====
+async function connectWallet() {
+  try {
+    if (typeof window.ethereum === 'undefined') {
+      alert('MetaMask не найден. Установите: https://metamask.io/download/');
+      return;
     }
+    // Request accounts
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const account = accounts && accounts[0];
+    if (!account) { alert('Не удалось получить адрес кошелька'); return; }
+
+    // Ensure BSC network (0x38)
+    let chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if (chainId !== '0x38') {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x38' }]
+        });
+      } catch (switchError) {
+        if (switchError.code === 4902) {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0x38',
+              chainName: 'BNB Smart Chain',
+              nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+              rpcUrls: ['https://bsc-dataseed.binance.org/'],
+              blockExplorerUrls: ['https://bscscan.com']
+            }]
+          });
+        } else {
+          console.error('switch error', switchError);
+        }
+      }
+    }
+
+    // Show short address on button and (if present) header span
+    const shortAddr = account.slice(0, 6) + '...' + account.slice(-4);
+    const btn = document.getElementById('connectWalletBtn');
+    if (btn) btn.textContent = shortAddr;
+    const span = document.getElementById('wallet-address');
+    if (span) span.textContent = shortAddr;
+
+    // Persist for later
+    try { localStorage.setItem('walletAddress', account); } catch(e){}
+
+  } catch (err) {
+    console.error('connectWallet error', err);
+    alert('Ошибка подключения кошелька');
   }
-  // Connect wallet from hero/topbar
-  const connect = document.getElementById('connectWalletBtn');
-  if (connect){
-    connect.addEventListener('click', (e)=>{ e.preventDefault(); connectWallet(); });
-  }
-  // Guard against any stray "#" anchors
-  document.querySelectorAll('a[href="#"]').forEach(a=>{
-    a.addEventListener('click', e=> e.preventDefault());
-  });
+}
+
+// Attach click handler if button exists
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('connectWalletBtn');
+  if (btn) btn.addEventListener('click', connectWallet);
 });
+
