@@ -166,3 +166,16 @@ window.addEventListener('scroll', () => {
   backBtn.style.display = (window.scrollY > 600) ? 'block' : 'none';
 });
 backBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// ===== Copy contract to clipboard =====
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('copyContractBtn');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText(btn.dataset.contract);
+      btn.textContent = 'Скопировано ✓';
+      setTimeout(()=> btn.textContent = '$SKY контракт', 1200);
+    }catch(e){ alert('Не удалось скопировать'); }
+  });
+});
