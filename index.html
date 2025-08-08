@@ -31,11 +31,11 @@
 <body data-i18n="buy_sky_modal">
 <!-- Parallax layer -->
 <div aria-hidden="true" id="parallax-bg"></div>
-<nav aria-label="Language switch" class="lang-switch">
+<nav aria-label="Language switch" class="lang-switch" data-i18n-aria="language_switch">
 <button data-i18n="ru" onclick="setLang('ru')">RU</button>
 <button data-i18n="en" onclick="setLang('en')">EN</button>
 </nav>
-<nav aria-label="Main" class="reveal fade-up" id="topbar">
+<nav aria-label="Main" class="reveal fade-up" data-i18n-aria="main" id="topbar">
 <div class="group actions">
 <button class="button" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" data-i18n="sky_" id="copyContractBtn">$SKY контракт</button>
 </div>
@@ -152,7 +152,7 @@
 </div>
 <!-- CoinGecko price widget (replace id if your token is listed) -->
 <div class="reveal fade-up" id="price-widget" style="margin-top:16px;">
-<iframe src="https://www.coingecko.com/en/widgets/price-chart?locale=en&amp;width=0&amp;height=300&amp;coin_id=1&amp;ref=github_pages" style="width:100%;height:320px;border:0;border-radius:12px;box-shadow:0 0 12px rgba(0,255,255,.35)" title="Price widget"></iframe>
+<iframe data-i18n-title="price_widget" src="https://www.coingecko.com/en/widgets/price-chart?locale=en&amp;width=0&amp;height=300&amp;coin_id=1&amp;ref=github_pages" style="width:100%;height:320px;border:0;border-radius:12px;box-shadow:0 0 12px rgba(0,255,255,.35)" title="Price widget"></iframe>
 <div data-i18n="_____2" style="font-size:12px;opacity:.7;margin-top:4px">* Временно показываем демо-график. Заменим на ваш токен после листинга.</div>
 </div>
 </section>
@@ -224,7 +224,7 @@
 <div class="visually-hidden" data-i18n="_____3" id="disclaimer">
     Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.
   </div>
-<button aria-label="Наверх" id="backToTop">↑</button>
+<button aria-label="Наверх" data-i18n-aria="aria_6" id="backToTop">↑</button>
 <!-- Buy $SKY Modal -->
 <div aria-hidden="true" aria-labelledby="buyTitle" class="modal" data-bsc-helper="true" data-i18n="preloader" id="buyModal" role="dialog">
 <div class="modal-dialog">
