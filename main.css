@@ -309,15 +309,3 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
   position:absolute; inset:0; z-index:-1; opacity:.35;
 }
 #fx-canvas{ width:100%; height:100%; display:block; }
-
-/* Neon SVG icons inside features */
-.feature-card .icon{display:flex;align-items:center;justify-content:center;height:36px}
-.feature-card .fx-icon{
-  color: var(--primary);
-  filter: drop-shadow(0 0 6px rgba(0,255,255,.75));
-  transition: transform .25s ease, filter .25s ease;
-}
-.feature-card:hover .fx-icon{
-  transform: scale(1.06);
-  filter: drop-shadow(0 0 10px rgba(0,255,255,1));
-}
