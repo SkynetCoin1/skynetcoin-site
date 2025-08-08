@@ -305,3 +305,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn2 = document.getElementById('addBSCBtnModal');
   if(btn2) btn2.addEventListener('click', addBSC);
 });
+
+// ===== Guard: prevent '#' anchors from jumping to page top =====
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href="#"]').forEach(a => {
+    a.addEventListener('click', (e) => e.preventDefault());
+  });
+  const buyHero = document.getElementById('openBuyModalHero');
+  const modal = document.getElementById('buyModal');
+  if (buyHero && modal) {
+    buyHero.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+    });
+  }
+});
