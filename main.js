@@ -1,5 +1,5 @@
 
-// ===== Project settings (edit your links & email here) =====
+// ===== Project settings =====
 window.SKY = {
   TOKEN_ADDRESS: "0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8",
   DAO_ADDRESS: "0xBD2eD7873a807F69c24934e6Ae48756ED18d5867",
@@ -17,45 +17,193 @@ window.SKY = {
 
 // ===== Reveal on scroll =====
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('active'); observer.unobserve(entry.target);} });
-},{threshold:0.1});
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target);} });
+}, {threshold:0.1, rootMargin:'0px 0px -10% 0px'});
+
+// ===== Parallax (background moves slower than content) =====
+function parallaxTick(){
+  const y = Math.round(window.scrollY * 0.2);
+  const bg = document.getElementById('parallax-bg');
+  if(bg) bg.style.backgroundPosition = 'center ' + (-y) + 'px';
+}
+window.addEventListener('scroll', parallaxTick);
+
+// ===== i18n content =====
+const T = {
+  en: {
+    hero_title: "The AI-Powered Future of Cryptocurrency",
+    hero_sub: "Skynet Coin — synergy of blockchain and artificial intelligence",
+    hero_p: "A decentralized token on BNB Chain, built for speed, security, and real AI solutions.",
+
+    about_p1: "Skynet Coin ($SKY) combines blockchain and AI. We are building an ecosystem where AI assists in investment decisions, DAO governance, and automated trading.",
+
+    tokenomics_1: "Total supply: 1,000,000,000 SKY",
+    tokenomics_2: "Liquidity & Exchanges — 40%",
+    tokenomics_3: "Ecosystem development — 30%",
+    tokenomics_4: "Marketing & Partnerships — 20%",
+    tokenomics_5: "Reserve fund — 10%",
+
+    roadmap_1: "Q1 2025 — Token & website launch",
+    roadmap_2: "Q2 2025 — DEX listing & NFT platform launch",
+    roadmap_3: "Q3 2025 — AI modules integration & DAO launch",
+    roadmap_4: "Q4 2025 — CEX listing & mobile app launch",
+
+    nftdao_1: "NFTs with unique AI-generated art",
+    nftdao_2: "DAO voting for project development",
+    nftdao_3: "AI-powered market analysis tools",
+    nftdao_4: "Access to exclusive community events",
+
+    airdrop_p: "Follow our socials and connect your wallet to claim free $SKY tokens. Details in our Telegram channel.",
+
+    footer: "Contact: " + window.SKY.CONTACT_EMAIL
+  },
+  ru: {
+    hero_title: "Будущее криптовалюты управляемое ИИ",
+    hero_sub: "Skynet Coin — синергия блокчейна и искусственного интеллекта",
+    hero_p: "Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.",
+
+    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ. Мы строим экосистему, где AI помогает принимать инвестиционные решения, управлять DAO и автоматизировать торговлю.",
+
+    tokenomics_1: "Общий объём: 1,000,000,000 SKY",
+    tokenomics_2: "Ликвидность и биржи — 40%",
+    tokenomics_3: "Развитие экосистемы — 30%",
+    tokenomics_4: "Маркетинг и партнёрства — 20%",
+    tokenomics_5: "Резервный фонд — 10%",
+
+    roadmap_1: "Q1 2025 — Запуск токена и сайта",
+    roadmap_2: "Q2 2025 — Листинг на DEX и запуск NFT-платформы",
+    roadmap_3: "Q3 2025 — Интеграция AI-модулей и запуск DAO",
+    roadmap_4: "Q4 2025 — Листинг на CEX и мобильное приложение",
+
+    nftdao_1: "NFT с уникальными AI-генерированными артами",
+    nftdao_2: "Голосование в DAO за развитие проекта",
+    nftdao_3: "AI‑инструменты для анализа рынка",
+    nftdao_4: "Доступ к закрытым мероприятиям сообщества",
+
+    airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк, чтобы получить бесплатные токены $SKY. Подробности — в Telegram-канале.",
+
+    footer: "Контакты: " + window.SKY.CONTACT_EMAIL
+  }
+};
+
+function setLang(lang){
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  const trans = T[lang] || T['ru'];
+  for(const [key,val] of Object.entries(trans)){
+    const els = document.querySelectorAll('[data-i18n="'+key+'"]');
+    els.forEach(el => el.textContent = val);
+  }
+}
+
 window.addEventListener("DOMContentLoaded", ()=>{
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  setLang(localStorage.getItem('lang') || 'ru');
+  parallaxTick();
 });
 
-// ===== i18n (RU/EN) =====
-const translations = {
-  en:{hero_title:"The Future of Crypto Meets AI",hero_sub:"Welcome to Skynet Coin",
-      hero_p:"Skynet Coin ($SKY) merges blockchain and AI. Fast, secure, decentralized.",
-      about_h2:"About Skynet Coin",tokenomics_h2:"Tokenomics",roadmap_h2:"Roadmap",
-      nftdao_h2:"NFT / DAO / Utility",airdrop_h2:"Claim Your Airdrop",
-      footer:"Contact: " + window.SKY.CONTACT_EMAIL},
-  ru:{hero_title:"Будущее крипты встречается с ИИ",hero_sub:"Добро пожаловать в Skynet Coin",
-      hero_p:"Skynet Coin ($SKY) объединяет блокчейн и ИИ. Быстро, безопасно, децентрализовано.",
-      about_h2:"О проекте Skynet Coin",tokenomics_h2:"Токеномика",roadmap_h2:"Дорожная карта",
-      nftdao_h2:"NFT / DAO / Utility",airdrop_h2:"Получите Airdrop",
-      footer:"Контакты: " + window.SKY.CONTACT_EMAIL}
-};
-function setLang(lang){localStorage.setItem("lang",lang);document.documentElement.lang=lang;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{const t=translations[lang][el.dataset.i18n];if(t)el.textContent=t;});}
-window.addEventListener("DOMContentLoaded",()=>setLang(localStorage.getItem("lang")||"ru"));
-
-// ===== Wallet (MetaMask only, simple & safe) =====
+// ===== Wallet connect (MetaMask) =====
 async function connectWallet(){
   if(!window.ethereum){ alert("MetaMask не найден"); return; }
-  const provider=new ethers.providers.Web3Provider(window.ethereum);
-  await provider.send("eth_requestAccounts",[]);
-  const signer=provider.getSigner();
-  const address=await signer.getAddress();
-  const el=document.getElementById("wallet-address");
-  if(el) el.textContent=address.slice(0,6)+"..."+address.slice(-4);
-  return {provider,signer,address};
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer = provider.getSigner();
+  const address = await signer.getAddress();
+  const el = document.getElementById("wallet-address");
+  if (el) el.textContent = address.slice(0,6) + "..." + address.slice(-4);
+  return {provider, signer, address};
 }
-window.connectWallet=connectWallet;
+window.connectWallet = connectWallet;
 
-// ===== GA4 (off by default) =====
-(function initGA(){ if(!window.SKY.ENABLE_GA4||!window.SKY.GA4_ID) return;
+// ===== GA4 (disabled by default) =====
+(function initGA(){
+  if(!window.SKY.ENABLE_GA4 || !window.SKY.GA4_ID) return;
   const s=document.createElement("script"); s.async=true;
-  s.src="https://www.googletagmanager.com/gtag/js?id="+window.SKY.GA4_ID; document.head.appendChild(s);
-  window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
-  gtag('js', new Date()); gtag('config', window.SKY.GA4_ID, {'anonymize_ip': true}); })();
+  s.src="https://www.googletagmanager.com/gtag/js?id="+window.SKY.GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+  gtag('js', new Date()); gtag('config', window.SKY.GA4_ID, {'anonymize_ip': true});
+})();
+
+// ===== Smooth anchor scroll fallback =====
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const id = this.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+});
+
+// ===== Scrollspy for sticky nav =====
+const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
+const sectionMap = navLinks.map(link => {
+  const id = link.getAttribute('href');
+  return { id, link, el: document.querySelector(id) };
+}).filter(x => x.el);
+
+const spyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const item = sectionMap.find(s => s.el === entry.target);
+    if (!item) return;
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      item.link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+
+sectionMap.forEach(s => spyObserver.observe(s.el));
+
+// ===== Back to top =====
+const backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backBtn.style.display = (window.scrollY > 600) ? 'block' : 'none';
+});
+backBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// ===== Copy contract to clipboard =====
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('copyContractBtn');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText(btn.dataset.contract);
+      btn.textContent = 'Скопировано ✓';
+      setTimeout(()=> btn.textContent = '$SKY контракт', 1200);
+    }catch(e){ alert('Не удалось скопировать'); }
+  });
+});
+
+// ===== Buy Modal =====
+document.addEventListener('DOMContentLoaded', () => {
+  const openBtn = document.getElementById('openBuyModal');
+  const closeBtn = document.getElementById('closeBuyModal');
+  const modal = document.getElementById('buyModal');
+  if(openBtn && modal){
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+    });
+  }
+  if(closeBtn && modal){
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+    });
+  }
+  // Close on outside click / Esc
+  modal?.addEventListener('click', (e)=>{ if(e.target === modal){ modal.classList.remove('show'); }});
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') modal?.classList.remove('show'); });
+});
+
+// ===== Preloader: hide after load or 1.2s fallback =====
+window.addEventListener('load', () => {
+  const pl = document.getElementById('preloader');
+  setTimeout(()=> pl?.classList.add('hidden'), 200);
+});
