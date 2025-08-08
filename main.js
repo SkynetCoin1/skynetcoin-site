@@ -306,17 +306,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if(btn2) btn2.addEventListener('click', addBSC);
 });
 
-// ===== Guard: prevent '#' anchors from jumping to page top =====
+// ===== Unify hero and topbar buttons =====
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a[href="#"]').forEach(a => {
-    a.addEventListener('click', (e) => e.preventDefault());
-  });
-  const buyHero = document.getElementById('openBuyModalHero');
-  const modal = document.getElementById('buyModal');
-  if (buyHero && modal) {
-    buyHero.addEventListener('click', () => {
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden','false');
-    });
+  // Open Buy modal from any button id
+  const buyCandidates = ['buyBtn','openBuyModalHero','openBuyModal'];
+  for (const id of buyCandidates){
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const modal = document.getElementById('buyModal');
+        if (modal){ modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
+      });
+    }
   }
+  // Connect wallet from hero/topbar
+  const connect = document.getElementById('connectWalletBtn');
+  if (connect){
+    connect.addEventListener('click', (e)=>{ e.preventDefault(); connectWallet(); });
+  }
+  // Guard against any stray "#" anchors
+  document.querySelectorAll('a[href="#"]').forEach(a=>{
+    a.addEventListener('click', e=> e.preventDefault());
+  });
 });
