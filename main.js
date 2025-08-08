@@ -485,3 +485,33 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btn) btn.addEventListener('click', connectWallet);
 });
 
+
+
+// ==== Extra wiring for legacy button id (added) ====
+(function(){
+  function short(address){ return address ? (address.slice(0,6) + "..." + address.slice(-4)) : ""; }
+  async function onConnectUnified(e){
+    if(e) e.preventDefault();
+    const ok = await ensureNetwork();
+    if(!ok) return;
+    try{
+      const ctx = await (window.connectWallet ? window.connectWallet() : connectWallet());
+      if(ctx && ctx.address){
+        const btn = document.getElementById('connectWalletBtn');
+        if(btn) btn.textContent = short(ctx.address);
+        const span = document.getElementById('wallet-address');
+        if(span) span.textContent = short(ctx.address);
+      }
+    }catch(err){ console.warn(err); alert("Ошибка подключения кошелька"); }
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const legacyBtn = document.getElementById('connectWalletBtn');
+      if(legacyBtn) legacyBtn.addEventListener('click', onConnectUnified);
+    });
+  } else {
+    const legacyBtn = document.getElementById('connectWalletBtn');
+    if(legacyBtn) legacyBtn.addEventListener('click', onConnectUnified);
+  }
+})();
