@@ -87,3 +87,16 @@ ul.feature-list li{margin:8px 0}
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .reveal, .reveal.fade-up, .reveal.fade-left, .reveal.fade-right { opacity: 1 !important; transform: none !important; }
 }
+
+/* Buttons: subtle scale + glow on hover/focus */
+a.button, .button, button{
+  will-change: transform, box-shadow;
+}
+a.button:hover, .button:hover, button:hover{
+  transform: translateY(-2px) scale(1.02);
+}
+a.button:focus-visible, .button:focus-visible, button:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,255,255,.35), 0 0 12px var(--primary);
+  transform: translateY(-1px) scale(1.01);
+}

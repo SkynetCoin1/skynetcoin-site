@@ -125,3 +125,17 @@ window.connectWallet = connectWallet;
   function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
   gtag('js', new Date()); gtag('config', window.SKY.GA4_ID, {'anonymize_ip': true});
 })();
+
+// ===== Smooth anchor scroll fallback =====
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const id = this.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+});
