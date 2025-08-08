@@ -1,4 +1,140 @@
 
+const T = {
+  ru: {
+    skynet_coin_sky_ai_blockchain: "Skynet Coin ($SKY) — AI × Blockchain",
+    a_nav_link_visited_color_var_p: "a.nav-link:visited{ color: var(--primary); }",
+    ru: "RU",
+    en: "EN",
+    sky: "$SKY контракт",
+    txt: "О проекте",
+    txt_2: "Токеномика",
+    txt_3: "Дорожная карта",
+    txt_4: "Сообщество",
+    airdrop: "Airdrop",
+    skynet_coin_logo: "Skynet Coin logo",
+    bscscan: "BscScan",
+    txt_5: "Наши преимущества",
+    txt_6: "Децентрализация",
+    dao: "Голосование через DAO и участие сообщества в развитии экосистемы.",
+    skynet_coin: "О проекте Skynet Coin",
+    txt_7: "Токеномика",
+    whitepaper: "Whitepaper",
+    txt_8: "Дорожная карта",
+    nft_dao_utility: "NFT / DAO / Utility",
+    twitter: "Twitter",
+    telegram: "Telegram",
+    email: "Email",
+    github: "GitHub",
+    txt_9: "* Временно показываем демо-график. Заменим на ваш токен после листинга.",
+    sky_2: "Как купить $SKY",
+    1_metamask: "1. Установите MetaMask",
+    bnb_smart_chain: "BNB Smart Chain",
+    metamask: "Скачать MetaMask",
+    2_bnb: "2. Пополните BNB",
+    bnb: "BNB",
+    3_sky: "3. Обменяйте на $SKY",
+    pancakeswap: "PancakeSwap",
+    4: "4. Добавьте токен в кошелёк",
+    sky_metamask: "Чтобы видеть баланс $SKY, добавьте токен в MetaMask.",
+    sky_metamask_2: "Добавить $SKY в MetaMask",
+    copy_contract: "Copy contract",
+    add_sky_to_metamask: "Add $SKY to MetaMask",
+    buy_on_pancakeswap: "Buy on PancakeSwap",
+    airdrop_2: "Получите Airdrop",
+    pancakeswap_2: "PancakeSwap",
+    claim_sky: "Claim $SKY",
+    txt_10: "Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.",
+    txt_11: "↑",
+    sky_3: "Как купить $SKY",
+    bnb_smart_chain_2: "BNB Smart Chain",
+    txt_12: "Нажмите «Подключить кошелёк» на сайте.",
+    pancakeswap_3: "Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.",
+    pancakeswap_4: "Открыть PancakeSwap",
+    txt_13: "Закрыть",
+    bsc: "Добавить сеть BSC",
+    bsc_2: "Добавить сеть BSC",
+    document_addeventlistener_domc: "document.addEventListener('DOMContentLoaded', function(){
+  function removeByText(txt){
+    const candidates = Array.from(document.querySelectorAll('a,button'));
+    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
+    if (el && el.parentElement) el.parentElement.removeChild(el);
+  }
+  // Удаляем 3 кнопки
+  removeByText('Подключить кошелёк');
+  removeByText('Купить $SKY');
+  // На случай дубля в шапке и в hero — удалим второй раз, если есть
+  removeByText('Подключить кошелёк');
+});"
+  },
+  en: {
+    skynet_coin_sky_ai_blockchain: "[EN] Skynet Coin ($SKY) — AI × Blockchain",
+    a_nav_link_visited_color_var_p: "[EN] a.nav-link:visited{ color: var(--primary); }",
+    ru: "[EN] RU",
+    en: "[EN] EN",
+    sky: "[EN] $SKY контракт",
+    txt: "[EN] О проекте",
+    txt_2: "[EN] Токеномика",
+    txt_3: "[EN] Дорожная карта",
+    txt_4: "[EN] Сообщество",
+    airdrop: "[EN] Airdrop",
+    skynet_coin_logo: "[EN] Skynet Coin logo",
+    bscscan: "[EN] BscScan",
+    txt_5: "[EN] Наши преимущества",
+    txt_6: "[EN] Децентрализация",
+    dao: "[EN] Голосование через DAO и участие сообщества в развитии экосистемы.",
+    skynet_coin: "[EN] О проекте Skynet Coin",
+    txt_7: "[EN] Токеномика",
+    whitepaper: "[EN] Whitepaper",
+    txt_8: "[EN] Дорожная карта",
+    nft_dao_utility: "[EN] NFT / DAO / Utility",
+    twitter: "[EN] Twitter",
+    telegram: "[EN] Telegram",
+    email: "[EN] Email",
+    github: "[EN] GitHub",
+    txt_9: "[EN] * Временно показываем демо-график. Заменим на ваш токен после листинга.",
+    sky_2: "[EN] Как купить $SKY",
+    1_metamask: "[EN] 1. Установите MetaMask",
+    bnb_smart_chain: "[EN] BNB Smart Chain",
+    metamask: "[EN] Скачать MetaMask",
+    2_bnb: "[EN] 2. Пополните BNB",
+    bnb: "[EN] BNB",
+    3_sky: "[EN] 3. Обменяйте на $SKY",
+    pancakeswap: "[EN] PancakeSwap",
+    4: "[EN] 4. Добавьте токен в кошелёк",
+    sky_metamask: "[EN] Чтобы видеть баланс $SKY, добавьте токен в MetaMask.",
+    sky_metamask_2: "[EN] Добавить $SKY в MetaMask",
+    copy_contract: "[EN] Copy contract",
+    add_sky_to_metamask: "[EN] Add $SKY to MetaMask",
+    buy_on_pancakeswap: "[EN] Buy on PancakeSwap",
+    airdrop_2: "[EN] Получите Airdrop",
+    pancakeswap_2: "[EN] PancakeSwap",
+    claim_sky: "[EN] Claim $SKY",
+    txt_10: "[EN] Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.",
+    txt_11: "[EN] ↑",
+    sky_3: "[EN] Как купить $SKY",
+    bnb_smart_chain_2: "[EN] BNB Smart Chain",
+    txt_12: "[EN] Нажмите «Подключить кошелёк» на сайте.",
+    pancakeswap_3: "[EN] Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.",
+    pancakeswap_4: "[EN] Открыть PancakeSwap",
+    txt_13: "[EN] Закрыть",
+    bsc: "[EN] Добавить сеть BSC",
+    bsc_2: "[EN] Добавить сеть BSC",
+    document_addeventlistener_domc: "[EN] document.addEventListener('DOMContentLoaded', function(){
+  function removeByText(txt){
+    const candidates = Array.from(document.querySelectorAll('a,button'));
+    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
+    if (el && el.parentElement) el.parentElement.removeChild(el);
+  }
+  // Удаляем 3 кнопки
+  removeByText('Подключить кошелёк');
+  removeByText('Купить $SKY');
+  // На случай дубля в шапке и в hero — удалим второй раз, если есть
+  removeByText('Подключить кошелёк');
+});"
+  }
+};
+
+
 // ===== Project settings =====
 window.SKY = {
   TOKEN_ADDRESS: "0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8",
@@ -56,70 +192,6 @@ const T = {
     airdrop_p: "Follow our socials and connect your wallet to claim free $SKY tokens. Details in our Telegram channel.",
 
     footer: "Contact: " + window.SKY.CONTACT_EMAIL
-    skynet_coin_sky_ai_blockchain: "Skynet Coin ($SKY) — AI × Blockchain",
-    a_nav_link_visited_color_var_p: "a.nav-link:visited{ color: var(--primary); }",
-    ru_2: "RU",
-    en: "EN",
-    sky: "$SKY контракт",
-    txt: "О проекте",
-    txt_2: "Токеномика",
-    txt_3: "Дорожная карта",
-    txt_4: "Сообщество",
-    airdrop: "Airdrop",
-    skynet_coin_logo: "Skynet Coin logo",
-    bscscan: "BscScan",
-    txt_5: "Наши преимущества",
-    txt_6: "Децентрализация",
-    dao: "Голосование через DAO и участие сообщества в развитии экосистемы.",
-    skynet_coin: "О проекте Skynet Coin",
-    txt_7: "Токеномика",
-    whitepaper: "Whitepaper",
-    txt_8: "Дорожная карта",
-    nft_dao_utility: "NFT / DAO / Utility",
-    twitter: "Twitter",
-    telegram: "Telegram",
-    email: "Email",
-    github: "GitHub",
-    txt_9: "* Временно показываем демо-график. Заменим на ваш токен после листинга.",
-    sky_2: "Как купить $SKY",
-    1_metamask: "1. Установите MetaMask",
-    bnb_smart_chain: "BNB Smart Chain",
-    metamask: "Скачать MetaMask",
-    2_bnb: "2. Пополните BNB",
-    bnb: "BNB",
-    3_sky: "3. Обменяйте на $SKY",
-    pancakeswap: "PancakeSwap",
-    4: "4. Добавьте токен в кошелёк",
-    sky_metamask: "Чтобы видеть баланс $SKY, добавьте токен в MetaMask.",
-    sky_metamask_2: "Добавить $SKY в MetaMask",
-    copy_contract: "Copy contract",
-    add_sky_to_metamask: "Add $SKY to MetaMask",
-    buy_on_pancakeswap: "Buy on PancakeSwap",
-    airdrop_2: "Получите Airdrop",
-    pancakeswap_2: "PancakeSwap",
-    claim_sky: "Claim $SKY",
-    txt_10: "Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.",
-    txt_11: "↑",
-    sky_3: "Как купить $SKY",
-    bnb_smart_chain_2: "BNB Smart Chain",
-    txt_12: "Нажмите «Подключить кошелёк» на сайте.",
-    pancakeswap_3: "Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.",
-    pancakeswap_4: "Открыть PancakeSwap",
-    txt_13: "Закрыть",
-    bsc: "Добавить сеть BSC",
-    bsc_2: "Добавить сеть BSC",
-    document_addeventlistener_domc: "document.addEventListener('DOMContentLoaded', function(){
-  function removeByText(txt){
-    const candidates = Array.from(document.querySelectorAll('a,button'));
-    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
-    if (el && el.parentElement) el.parentElement.removeChild(el);
-  }
-  // Удаляем 3 кнопки
-  removeByText('Подключить кошелёк');
-  removeByText('Купить $SKY');
-  // На случай дубля в шапке и в hero — удалим второй раз, если есть
-  removeByText('Подключить кошелёк');
-});",
   },
   ru: {
     hero_title: "Будущее криптовалюты управляемое ИИ",
@@ -165,70 +237,6 @@ const T = {
     feature_2_p: "Прозрачный смарт‑контракт, открытый код и защита кошелька.",
     feature_3_title: "Децентрализация",
     feature_3_p: "Голосование через DAO и участие сообщества в развитии экосистемы.",
-    skynet_coin_sky_ai_blockchain: "Skynet Coin ($SKY) — AI × Blockchain",
-    a_nav_link_visited_color_var_p: "a.nav-link:visited{ color: var(--primary); }",
-    ru_2: "RU",
-    en: "EN",
-    sky: "$SKY контракт",
-    txt: "О проекте",
-    txt_2: "Токеномика",
-    txt_3: "Дорожная карта",
-    txt_4: "Сообщество",
-    airdrop: "Airdrop",
-    skynet_coin_logo: "Skynet Coin logo",
-    bscscan: "BscScan",
-    txt_5: "Наши преимущества",
-    txt_6: "Децентрализация",
-    dao: "Голосование через DAO и участие сообщества в развитии экосистемы.",
-    skynet_coin: "О проекте Skynet Coin",
-    txt_7: "Токеномика",
-    whitepaper: "Whitepaper",
-    txt_8: "Дорожная карта",
-    nft_dao_utility: "NFT / DAO / Utility",
-    twitter: "Twitter",
-    telegram: "Telegram",
-    email: "Email",
-    github: "GitHub",
-    txt_9: "* Временно показываем демо-график. Заменим на ваш токен после листинга.",
-    sky_2: "Как купить $SKY",
-    1_metamask: "1. Установите MetaMask",
-    bnb_smart_chain: "BNB Smart Chain",
-    metamask: "Скачать MetaMask",
-    2_bnb: "2. Пополните BNB",
-    bnb: "BNB",
-    3_sky: "3. Обменяйте на $SKY",
-    pancakeswap: "PancakeSwap",
-    4: "4. Добавьте токен в кошелёк",
-    sky_metamask: "Чтобы видеть баланс $SKY, добавьте токен в MetaMask.",
-    sky_metamask_2: "Добавить $SKY в MetaMask",
-    copy_contract: "Copy contract",
-    add_sky_to_metamask: "Add $SKY to MetaMask",
-    buy_on_pancakeswap: "Buy on PancakeSwap",
-    airdrop_2: "Получите Airdrop",
-    pancakeswap_2: "PancakeSwap",
-    claim_sky: "Claim $SKY",
-    txt_10: "Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.",
-    txt_11: "↑",
-    sky_3: "Как купить $SKY",
-    bnb_smart_chain_2: "BNB Smart Chain",
-    txt_12: "Нажмите «Подключить кошелёк» на сайте.",
-    pancakeswap_3: "Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.",
-    pancakeswap_4: "Открыть PancakeSwap",
-    txt_13: "Закрыть",
-    bsc: "Добавить сеть BSC",
-    bsc_2: "Добавить сеть BSC",
-    document_addeventlistener_domc: "document.addEventListener('DOMContentLoaded', function(){
-  function removeByText(txt){
-    const candidates = Array.from(document.querySelectorAll('a,button'));
-    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
-    if (el && el.parentElement) el.parentElement.removeChild(el);
-  }
-  // Удаляем 3 кнопки
-  removeByText('Подключить кошелёк');
-  removeByText('Купить $SKY');
-  // На случай дубля в шапке и в hero — удалим второй раз, если есть
-  removeByText('Подключить кошелёк');
-});",
   }
 };
 
