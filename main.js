@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 // ===== Scrollspy for sticky nav =====
-const navLinks = Array.from(document.querySelectorAll('#topnav .nav-link'));
+const navLinks = Array.from(document.querySelectorAll('#topbar .nav-link'));
 const sectionMap = navLinks.map(link => {
   const id = link.getAttribute('href');
   return { id, link, el: document.querySelector(id) };
