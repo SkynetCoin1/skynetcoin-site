@@ -113,11 +113,6 @@ function setLang(lang){
     els.forEach(el => el.textContent = val);
   }
 }
-  // i18n: update alt/placeholder too
-  for(const [key,val] of Object.entries(trans)){
-    document.querySelectorAll('[data-i18n-alt="'+key+'"]').forEach(el => el.alt = val);
-    document.querySelectorAll('[data-i18n-ph="'+key+'"]').forEach(el => el.placeholder = val);
-  }
 
 window.addEventListener("DOMContentLoaded", ()=>{
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
@@ -551,90 +546,3 @@ document.addEventListener('DOMContentLoaded', () => {
     setLang(lang);
   }
 })();
-
-
-/* === I18N block (appended; preserves existing logic) === */
-window.T = window.T || { ru: {}, en: {} };
-Object.assign(window.T.ru, {
-    skynet_coin_sky_ai_blockchain: "Skynet Coin ($SKY) — AI × Blockchain",
-    ru: "RU",
-    en: "EN",
-    sky: "$SKY контракт",
-    skynet_coin_logo: "Skynet Coin logo",
-    bscscan: "BscScan",
-    txt: "Децентрализация",
-    dao: "Голосование через DAO и участие сообщества в развитии экосистемы.",
-    skynet_coin: "О проекте Skynet Coin",
-    whitepaper: "Whitepaper",
-    twitter: "Twitter",
-    telegram: "Telegram",
-    email: "Email",
-    github: "GitHub",
-    txt_2: "* Временно показываем демо-график. Заменим на ваш токен после листинга.",
-    1_metamask: "1. Установите MetaMask",
-    bnb_smart_chain: "BNB Smart Chain",
-    metamask: "Скачать MetaMask",
-    2_bnb: "2. Пополните BNB",
-    bnb: "BNB",
-    3_sky: "3. Обменяйте на $SKY",
-    pancakeswap: "PancakeSwap",
-    4: "4. Добавьте токен в кошелёк",
-    sky_metamask: "Чтобы видеть баланс $SKY, добавьте токен в MetaMask.",
-    sky_metamask_2: "Добавить $SKY в MetaMask",
-    copy_contract: "Copy contract",
-    add_sky_to_metamask: "Add $SKY to MetaMask",
-    buy_on_pancakeswap: "Buy on PancakeSwap",
-    pancakeswap_2: "PancakeSwap",
-    claim_sky: "Claim $SKY",
-    txt_3: "Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.",
-    txt_4: "↑",
-    sky_2: "Как купить $SKY",
-    bnb_smart_chain_2: "BNB Smart Chain",
-    txt_5: "Нажмите «Подключить кошелёк» на сайте.",
-    pancakeswap_3: "Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.",
-    pancakeswap_4: "Открыть PancakeSwap",
-    txt_6: "Закрыть",
-    bsc: "Добавить сеть BSC"
-});
-Object.assign(window.T.en, {
-    skynet_coin_sky_ai_blockchain: "Skynet coin ($sky) — ai × blockchain",
-    ru: "Ru",
-    en: "En",
-    sky: "Next‑gen crypto powered by AI and BNB Chain.",
-    skynet_coin_logo: "Skynet Coin Logo",
-    bscscan: "Bscscan",
-    txt: "Decentralization",
-    dao: "Next‑gen crypto powered by AI and BNB Chain.",
-    skynet_coin: "About Skynet Coin",
-    whitepaper: "Whitepaper",
-    twitter: "Twitter",
-    telegram: "Telegram",
-    email: "Email",
-    github: "Github",
-    txt_2: "Next‑gen crypto powered by AI and BNB Chain.",
-    1_metamask: "Next‑gen crypto powered by AI and BNB Chain.",
-    bnb_smart_chain: "Bnb Smart Chain",
-    metamask: "Next‑gen crypto powered by AI and BNB Chain.",
-    2_bnb: "Next‑gen crypto powered by AI and BNB Chain.",
-    bnb: "Bnb",
-    3_sky: "Next‑gen crypto powered by AI and BNB Chain.",
-    pancakeswap: "Pancakeswap",
-    4: "Next‑gen crypto powered by AI and BNB Chain.",
-    sky_metamask: "Next‑gen crypto powered by AI and BNB Chain.",
-    sky_metamask_2: "Next‑gen crypto powered by AI and BNB Chain.",
-    copy_contract: "Copy Contract",
-    add_sky_to_metamask: "Add $sky to metamask",
-    buy_on_pancakeswap: "Buy On Pancakeswap",
-    pancakeswap_2: "Pancakeswap",
-    claim_sky: "Claim $sky",
-    txt_3: "Next‑gen crypto powered by AI and BNB Chain.",
-    txt_4: "↑",
-    sky_2: "How to buy $sky",
-    bnb_smart_chain_2: "Bnb Smart Chain",
-    txt_5: "Next‑gen crypto powered by AI and BNB Chain.",
-    pancakeswap_3: "Next‑gen crypto powered by AI and BNB Chain.",
-    pancakeswap_4: "Open Pancakeswap",
-    txt_6: "Next‑gen crypto powered by AI and BNB Chain.",
-    bsc: "Next‑gen crypto powered by AI and BNB Chain."
-});
-/* === /I18N block === */
