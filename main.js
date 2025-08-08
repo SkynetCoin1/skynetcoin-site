@@ -250,3 +250,27 @@ window.addEventListener('load', () => {
   }
   requestAnimationFrame(tick);
 })();
+
+// ===== Add token to MetaMask =====
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('addToWalletBtn');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    try{
+      if(!window.ethereum){ alert('MetaMask не найден'); return; }
+      const wasAdded = await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: '0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8',
+            symbol: 'SKY',
+            decimals: 18,
+            image: location.origin + '/logo.png'
+          }
+        }
+      });
+      if (wasAdded) { btn.textContent = 'Добавлено ✓'; }
+    }catch(e){ console.error(e); alert('Не удалось добавить токен'); }
+  });
+});
