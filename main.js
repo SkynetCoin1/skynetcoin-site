@@ -22,9 +22,9 @@ const observer = new IntersectionObserver(entries => {
 
 // ===== Parallax (background moves slower than content) =====
 function parallaxTick(){
-  const y = window.scrollY * 0.2; // 0.2 = лёгкий параллакс
+  const y = Math.round(window.scrollY * 0.2);
   const bg = document.getElementById('parallax-bg');
-  if(bg) bg.style.transform = 'translateY(' + y + 'px)';
+  if(bg) bg.style.backgroundPosition = 'center ' + (-y) + 'px';
 }
 window.addEventListener('scroll', parallaxTick);
 

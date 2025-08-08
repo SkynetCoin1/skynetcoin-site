@@ -21,10 +21,10 @@ body{
 #parallax-bg{
   position:fixed;
   inset:0;
-  background:url('./background.png') center/cover no-repeat;
+  background:url('./background.png') center/110% no-repeat;
   z-index:-1;
   will-change:transform;
-  transform:translateY(0);
+  background-attachment: fixed; background-position: center 0;
 }
 
 header, section, footer{
