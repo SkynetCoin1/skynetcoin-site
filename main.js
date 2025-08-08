@@ -179,3 +179,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }catch(e){ alert('Не удалось скопировать'); }
   });
 });
+
+// ===== Buy Modal =====
+document.addEventListener('DOMContentLoaded', () => {
+  const openBtn = document.getElementById('openBuyModal');
+  const closeBtn = document.getElementById('closeBuyModal');
+  const modal = document.getElementById('buyModal');
+  if(openBtn && modal){
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+    });
+  }
+  if(closeBtn && modal){
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+    });
+  }
+  // Close on outside click / Esc
+  modal?.addEventListener('click', (e)=>{ if(e.target === modal){ modal.classList.remove('show'); }});
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') modal?.classList.remove('show'); });
+});
+
+// ===== Preloader: hide after load or 1.2s fallback =====
+window.addEventListener('load', () => {
+  const pl = document.getElementById('preloader');
+  setTimeout(()=> pl?.classList.add('hidden'), 200);
+});

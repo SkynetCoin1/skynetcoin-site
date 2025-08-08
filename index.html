@@ -39,7 +39,7 @@
   </nav>
 
   <div id="cta-bar" class="reveal fade-up" role="region" aria-label="Quick actions">
-    <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">Купить $SKY</a>
+    <button class="button" id="openBuyModal">Купить $SKY</button>
     <button class="button" id="copyContractBtn" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" aria-label="Скопировать адрес контракта">$SKY контракт</button>
     <button class="button" onclick="connectWallet()" aria-label="Подключить кошелёк">Подключить кошелёк</button>
   </div>
@@ -59,7 +59,7 @@
     <p data-i18n="hero_p">Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.</p>
     <div class="buttons">
       <a class="button" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">BscScan</a>
-      <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">Купить $SKY</a>
+      <button class="button" id="openBuyModal">Купить $SKY</button>
       <a class="button" href="#" onclick="connectWallet()">Подключить кошелёк</a>
       <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
     </div>
@@ -133,6 +133,29 @@
   </div>
 
   <button id="backToTop" aria-label="Наверх">↑</button>
+
+
+  <!-- Buy $SKY Modal -->
+  <div id="buyModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
+    <div class="modal-dialog">
+      <h3 id="buyTitle">Как купить $SKY</h3>
+      <ol class="steps">
+        <li>Установите и откройте MetaMask (сеть <strong>BNB Smart Chain</strong>).</li>
+        <li>Нажмите «Подключить кошелёк» на сайте.</li>
+        <li>Перейдите в PancakeSwap по кнопке ниже — адрес токена уже подставлен.</li>
+      </ol>
+      <div class="buttons">
+        <a class="button" target="_blank" rel="noopener"
+           href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">Открыть PancakeSwap</a>
+        <button class="button" id="closeBuyModal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="spinner"></div>
+  </div>
 
 </body>
 </html>
