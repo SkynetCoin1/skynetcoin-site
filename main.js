@@ -1,5 +1,17 @@
 
 // ===== Project settings =====
+
+// ===== Wallet utils (MetaMask detection) =====
+function getProvider() {
+  const eth = window.ethereum;
+  if (!eth) return null;
+  // If multiple providers injected, prefer MetaMask
+  if (Array.isArray(eth.providers) && eth.providers.length) {
+    const mm = eth.providers.find(p => p.isMetaMask);
+    return mm || eth.providers[0];
+  }
+  return eth;
+}
 window.SKY = {
   TOKEN_ADDRESS: "0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8",
   DAO_ADDRESS: "0xBD2eD7873a807F69c24934e6Ae48756ED18d5867",
@@ -102,18 +114,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
   parallaxTick();
 });
 
-// ===== Wallet connect (MetaMask) =====
-async function connectWallet(){
-  if(!window.ethereum){ alert("MetaMask не найден"); return; }
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  await provider.send("eth_requestAccounts", []);
-  const signer = provider.getSigner();
-  const address = await signer.getAddress();
-  const el = document.getElementById("wallet-address");
-  if (el) el.textContent = address.slice(0,6) + "..." + address.slice(-4);
-  return {provider, signer, address};
-}
-window.connectWallet = connectWallet;
+
 
 // ===== GA4 (disabled by default) =====
 (function initGA(){
@@ -307,63 +308,87 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ===== Robust MetaMask connect with BSC switch/add =====
-async function connectWallet() {
+
+
+
+// ===== Wallet connect (MetaMask) — Improved =====
+function getProvider() {
+  const eth = window.ethereum;
+  if (!eth) return null;
+  if (eth.providers?.length) {
+    const mm = eth.providers.find(p => p.isMetaMask);
+    return mm || eth.providers[0];
+  }
+  return eth;
+}
+
+async function connectWallet(){
+  const eth = getProvider();
+  if (!eth) {
+    alert("MetaMask не найден. Открой сайт через HTTPS/localhost или во встроенном dapp-браузере MetaMask.");
+    const hint = document.getElementById('eth-hint');
+    if (hint) hint.style.display = 'block';
+    return;
+  }
   try {
-    if (typeof window.ethereum === 'undefined') {
-      alert('MetaMask не найден. Установите: https://metamask.io/download/');
-      return;
-    }
     // Request accounts
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    const account = accounts && accounts[0];
-    if (!account) { alert('Не удалось получить адрес кошелька'); return; }
-
-    // Ensure BSC network (0x38)
-    let chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if (chainId !== '0x38') {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x38' }]
-        });
-      } catch (switchError) {
-        if (switchError.code === 4902) {
-          await window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [{
-              chainId: '0x38',
-              chainName: 'BNB Smart Chain',
-              nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-              rpcUrls: ['https://bsc-dataseed.binance.org/'],
-              blockExplorerUrls: ['https://bscscan.com']
-            }]
-          });
-        } else {
-          console.error('switch error', switchError);
-        }
-      }
+    const accounts = await eth.request({ method: 'eth_requestAccounts' });
+    const address = accounts && accounts[0];
+    if (address) {
+      const el = document.getElementById("wallet-address");
+      if (el) el.textContent = address.slice(0,6) + "..." + address.slice(-4);
     }
-
-    // Show short address on button and (if present) header span
-    const shortAddr = account.slice(0, 6) + '...' + account.slice(-4);
-    const btn = document.getElementById('connectWalletBtn');
-    if (btn) btn.textContent = shortAddr;
-    const span = document.getElementById('wallet-address');
-    if (span) span.textContent = shortAddr;
-
-    // Persist for later
-    try { localStorage.setItem('walletAddress', account); } catch(e){}
-
-  } catch (err) {
-    console.error('connectWallet error', err);
+    // Optional: expose provider via ethers for further actions
+    if (window.ethers) {
+      const provider = new ethers.providers.Web3Provider(eth);
+      const signer = provider.getSigner();
+      window.SKY_PROVIDER = provider;
+      window.SKY_SIGNER = signer;
+      window.SKY_ADDRESS = address;
+    }
+    return address;
+  } catch (e) {
+    // 4001 — User rejected
+    if (e && (e.code === 4001 || e.code === "ACTION_REJECTED")) return;
+    console.error('connectWallet error', e);
     alert('Ошибка подключения кошелька');
   }
 }
+window.connectWallet = connectWallet;
+try {
+    const accounts = await eth.request({ method: 'eth_requestAccounts' });
+    if (!accounts || !accounts.length) return;
+    const address = accounts[0];
+    // Обновляем кнопку и span с адресом
+    const btn = document.getElementById('connectWalletBtn');
+    if (btn) btn.textContent = address.slice(0,6)+"..."+address.slice(-4);
+    const el = document.getElementById("wallet-address");
+    if (el) el.textContent = address.slice(0,6)+"..."+address.slice(-4);
+    try { localStorage.setItem('walletAddress', address); } catch(e){}
+  } catch (e) {
+    if (e.code === 4001) return; // user rejected
+    console.error('connectWallet error', e);
+    alert("Ошибка подключения кошелька");
+  }
+}
+window.connectWallet = connectWallet;
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('connectWalletBtn')?.addEventListener('click', connectWallet);
+});
 
-// Attach click handler if button exists
+
+
+// Attach click handler if button exists & show hint if environment is not suitable
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('connectWalletBtn');
   if (btn) btn.addEventListener('click', connectWallet);
+
+  const hint = document.getElementById('eth-hint');
+  const onFile = location.protocol === 'file:';
+  const noEth = !getProvider();
+  if (hint && (onFile || noEth)) {
+    hint.style.display = 'block';
+    if (onFile) hint.querySelector('.eth-hint__text').textContent = 'Откройте сайт через http://localhost:3000 или HTTPS — MetaMask не работает с file://';
+  }
 });
 
