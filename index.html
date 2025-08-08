@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="./main.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" defer></script>
   <script src="./main.js" defer></script>
+<style>a.nav-link:visited{ color: var(--primary); }</style>
 </head>
 <body>
   <!-- Parallax layer -->
@@ -68,6 +69,36 @@
   </header>
 
   <main>
+
+  <!-- Features section with animated particles background -->
+  <section id="features" class="reveal fade-up">
+    <div id="features-bg" aria-hidden="true"><canvas id="fx-canvas"></canvas></div>
+    <h2>Наши преимущества</h2>
+    <div class="features-grid">
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">🤖</div>
+        <h3>AI‑интеграция</h3>
+        <p>Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
+      </article>
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">⚡</div>
+        <h3>Скорость и комиссии</h3>
+        <p>BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
+      </article>
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">🛡️</div>
+        <h3>Безопасность</h3>
+        <p>Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
+      </article>
+      <article class="feature-card">
+        <div class="icon" aria-hidden="true">🌐</div>
+        <h3>Децентрализация</h3>
+        <p>Голосование через DAO и участие сообщества в развитии экосистемы.</p>
+      </article>
+    </div>
+  </section>
+
+
     <section id="about" class="reveal fade-left">
       <h2>О проекте Skynet Coin</h2>
       <p data-i18n="about_p1">Skynet Coin ($SKY) объединяет блокчейн и ИИ...</p>
