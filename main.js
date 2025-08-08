@@ -83,6 +83,24 @@ const T = {
     airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк, чтобы получить бесплатные токены $SKY. Подробности — в Telegram-канале.",
 
     footer: "Контакты: " + window.SKY.CONTACT_EMAIL
+    nav_about: "О проекте",
+    nav_tokenomics: "Токеномика",
+    nav_roadmap: "Дорожная карта",
+    nav_community: "Сообщество",
+    nav_airdrop: "Airdrop",
+    features_h2: "Наши преимущества",
+    about_h2: "О проекте",
+    tokenomics_h2: "Токеномика",
+    roadmap_h2: "Дорожная карта",
+    community_h2: "Сообщество",
+    howto_h2: "Как купить",
+    airdrop_h2: "Airdrop",
+    feature_1_title: "Скорость",
+    feature_1_p: "Мгновенные транзакции и низкие комиссии.",
+    feature_2_title: "Безопасность",
+    feature_2_p: "Прозрачный смарт‑контракт, открытый код и защита кошелька.",
+    feature_3_title: "Децентрализация",
+    feature_3_p: "Голосование через DAO и участие сообщества в развитии экосистемы.",
   }
 };
 
@@ -513,5 +531,18 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     const legacyBtn = document.getElementById('connectWalletBtn');
     if(legacyBtn) legacyBtn.addEventListener('click', onConnectUnified);
+  }
+})();
+
+
+/*LANG_INIT*/
+(function(){
+  const saved = localStorage.getItem('lang');
+  const browser = (navigator.language||'en').slice(0,2).toLowerCase();
+  const lang = saved || (browser==='ru' ? 'ru' : 'en');
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', ()=> setLang(lang));
+  } else {
+    setLang(lang);
   }
 })();
