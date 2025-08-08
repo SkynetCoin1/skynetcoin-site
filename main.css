@@ -345,3 +345,7 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
 #how-to-buy .buttons{ display:flex; flex-wrap:wrap; gap:8px; }
 @media (max-width: 960px){ #how-to-buy .steps-grid{ grid-template-columns: repeat(2,1fr);}}
 @media (max-width: 540px){ #how-to-buy .steps-grid{ grid-template-columns: 1fr;}}
+
+/* i18n background mapping */
+html[lang="ru"] #parallax-bg { background-image: url('./background.png'); }
+html[lang="en"] #parallax-bg { background-image: url('./background_en.png'); }
