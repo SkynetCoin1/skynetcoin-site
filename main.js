@@ -522,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 
-/* === I18N block (appended) === */
+/* === I18N block (final stable) === */
 window.T = window.T || { ru: {}, en: {} };
 Object.assign(window.T.ru, {
     skynet_coin_sky_ai_blockchain: "Skynet Coin ($SKY) — AI × Blockchain",
