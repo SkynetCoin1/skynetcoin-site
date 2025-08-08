@@ -4,9 +4,9 @@
   --primary:#00ffff;
   --text:#00ffff;
   --card:rgba(0,0,0,0.7);
-  --shadow0: 0 0 20px var(--primary);
+  --shadow0:0 0 20px var(--primary);
   --radius:12px;
-  --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font: Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -14,15 +14,25 @@ body{
   margin:0;
   font-family:var(--font);
   color:var(--text);
-  background: url('./background.png') no-repeat center/cover fixed, #000;
+  background:#000; /* image handled by parallax layer */
   text-align:center;
 }
+/* Parallax background layer */
+#parallax-bg{
+  position:fixed;
+  inset:0;
+  background:url('./background.png') center/cover no-repeat;
+  z-index:-1;
+  will-change:transform;
+  transform:translateY(0);
+}
+
 header, section, footer{
   padding:40px 20px;
   background:var(--card);
   box-shadow:var(--shadow0);
   margin:20px;
-  border-radius:var(--radius);
+  border-radius:10px;
 }
 a.button, .button, button{
   display:inline-block;
@@ -43,10 +53,18 @@ a.button:hover, .button:hover, button:hover{
 }
 img{max-width:100%;height:auto}
 #site-logo{width:280px;filter:drop-shadow(0 0 15px rgba(0,255,255,1))}
-.lang-switch{position:fixed;top:16px;right:16px;z-index:1000}
-.lang-switch button{padding:6px 10px}
+
+/* Reveal animation */
 .reveal{opacity:0;transform:translateY(30px);transition:all .6s ease-out}
 .reveal.active{opacity:1;transform:none}
+
+/* Lang switch */
+.lang-switch{position:fixed;top:16px;right:16px;z-index:1000}
+.lang-switch button{padding:6px 10px;border:2px solid var(--primary);background:transparent;color:var(--primary);border-radius:6px}
+
+ul.feature-list{list-style:none;padding:0;margin:10px auto;max-width:860px}
+ul.feature-list li{margin:8px 0}
+
 @media (max-width:768px){
   body{font-size:16px;padding:10px}
   section, footer{padding:20px 10px}
