@@ -1,30 +1,26 @@
 
-// ===== Config =====
+// ===== Project settings =====
 window.SKY = {
   TOKEN_ADDRESS: "0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8",
   DAO_ADDRESS: "0xBD2eD7873a807F69c24934e6Ae48756ED18d5867",
   ADMIN_ADDRESS: "0x7099d7CE5495c61c0e5614b133B81295DC7b9c09",
   WHITEPAPER_URL: "./skynetcoin_whitepaper.pdf",
   ENABLE_GA4: false,
-  GA4_ID: "",
+  GA4_ID: "G-XXXXXXXXXX",
+  SOCIALS: {
+    twitter: "https://twitter.com/yourhandle",
+    telegram: "https://t.me/yourchannel",
+    github: "https://github.com/SkynetCoin1"
+  },
   CONTACT_EMAIL: "info@skynetcoin.io"
 };
 
 // ===== Reveal on scroll =====
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    }
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target);} });
 }, {threshold:0.1, rootMargin:'0px 0px -10% 0px'});
 
-document.addEventListener("DOMContentLoaded", ()=>{
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-});
-
-// ===== Parallax background (no black gaps) =====
+// ===== Parallax (background moves slower than content) =====
 function parallaxTick(){
   const y = Math.round(window.scrollY * 0.2);
   const bg = document.getElementById('parallax-bg');
@@ -32,15 +28,110 @@ function parallaxTick(){
 }
 window.addEventListener('scroll', parallaxTick);
 
-// ===== i18n (minimal placeholder to avoid errors if data-i18n exists) =====
-function setLang(lang){ try{ localStorage.setItem('lang', lang); }catch(e){} }
+// ===== i18n content =====
+const T = {
+  en: {
+    hero_title: "The AI-Powered Future of Cryptocurrency",
+    hero_sub: "Skynet Coin — synergy of blockchain and artificial intelligence",
+    hero_p: "A decentralized token on BNB Chain, built for speed, security, and real AI solutions.",
 
-// ===== Smooth anchor scroll (guard against "#" jumping) =====
+    about_p1: "Skynet Coin ($SKY) combines blockchain and AI. We are building an ecosystem where AI assists in investment decisions, DAO governance, and automated trading.",
+
+    tokenomics_1: "Total supply: 1,000,000,000 SKY",
+    tokenomics_2: "Liquidity & Exchanges — 40%",
+    tokenomics_3: "Ecosystem development — 30%",
+    tokenomics_4: "Marketing & Partnerships — 20%",
+    tokenomics_5: "Reserve fund — 10%",
+
+    roadmap_1: "Q1 2025 — Token & website launch",
+    roadmap_2: "Q2 2025 — DEX listing & NFT platform launch",
+    roadmap_3: "Q3 2025 — AI modules integration & DAO launch",
+    roadmap_4: "Q4 2025 — CEX listing & mobile app launch",
+
+    nftdao_1: "NFTs with unique AI-generated art",
+    nftdao_2: "DAO voting for project development",
+    nftdao_3: "AI-powered market analysis tools",
+    nftdao_4: "Access to exclusive community events",
+
+    airdrop_p: "Follow our socials and connect your wallet to claim free $SKY tokens. Details in our Telegram channel.",
+
+    footer: "Contact: " + window.SKY.CONTACT_EMAIL
+  },
+  ru: {
+    hero_title: "Будущее криптовалюты управляемое ИИ",
+    hero_sub: "Skynet Coin — синергия блокчейна и искусственного интеллекта",
+    hero_p: "Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.",
+
+    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ. Мы строим экосистему, где AI помогает принимать инвестиционные решения, управлять DAO и автоматизировать торговлю.",
+
+    tokenomics_1: "Общий объём: 1,000,000,000 SKY",
+    tokenomics_2: "Ликвидность и биржи — 40%",
+    tokenomics_3: "Развитие экосистемы — 30%",
+    tokenomics_4: "Маркетинг и партнёрства — 20%",
+    tokenomics_5: "Резервный фонд — 10%",
+
+    roadmap_1: "Q1 2025 — Запуск токена и сайта",
+    roadmap_2: "Q2 2025 — Листинг на DEX и запуск NFT-платформы",
+    roadmap_3: "Q3 2025 — Интеграция AI-модулей и запуск DAO",
+    roadmap_4: "Q4 2025 — Листинг на CEX и мобильное приложение",
+
+    nftdao_1: "NFT с уникальными AI-генерированными артами",
+    nftdao_2: "Голосование в DAO за развитие проекта",
+    nftdao_3: "AI‑инструменты для анализа рынка",
+    nftdao_4: "Доступ к закрытым мероприятиям сообщества",
+
+    airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк, чтобы получить бесплатные токены $SKY. Подробности — в Telegram-канале.",
+
+    footer: "Контакты: " + window.SKY.CONTACT_EMAIL
+  }
+};
+
+function setLang(lang){
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  const trans = T[lang] || T['ru'];
+  for(const [key,val] of Object.entries(trans)){
+    const els = document.querySelectorAll('[data-i18n="'+key+'"]');
+    els.forEach(el => el.textContent = val);
+  }
+}
+
+window.addEventListener("DOMContentLoaded", ()=>{
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  setLang(localStorage.getItem('lang') || 'ru');
+  parallaxTick();
+});
+
+// ===== Wallet connect (MetaMask) =====
+async function connectWallet(){
+  if(!window.ethereum){ alert("MetaMask не найден"); return; }
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer = provider.getSigner();
+  const address = await signer.getAddress();
+  const el = document.getElementById("wallet-address");
+  if (el) el.textContent = address.slice(0,6) + "..." + address.slice(-4);
+  return {provider, signer, address};
+}
+window.connectWallet = connectWallet;
+
+// ===== GA4 (disabled by default) =====
+(function initGA(){
+  if(!window.SKY.ENABLE_GA4 || !window.SKY.GA4_ID) return;
+  const s=document.createElement("script"); s.async=true;
+  s.src="https://www.googletagmanager.com/gtag/js?id="+window.SKY.GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+  gtag('js', new Date()); gtag('config', window.SKY.GA4_ID, {'anonymize_ip': true});
+})();
+
+// ===== Smooth anchor scroll fallback =====
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
     link.addEventListener('click', function(e){
       const id = this.getAttribute('href');
-      if (!id || id === '#') { e.preventDefault(); return; }
+      if (!id || id === '#') return;
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
@@ -49,80 +140,118 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
-// ===== Scrollspy for topbar
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = Array.from(document.querySelectorAll('#topbar .nav-link'));
-  const sectionMap = navLinks.map(link => {
-    const id = link.getAttribute('href');
-    return { id, link, el: document.querySelector(id) };
-  }).filter(x => x.el);
-  const spyObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const item = sectionMap.find(s => s.el === entry.target);
-      if (!item) return;
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        item.link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
-  sectionMap.forEach(s => spyObserver.observe(s.el));
-});
+// ===== Scrollspy for sticky nav =====
+const navLinks = Array.from(document.querySelectorAll('#topbar .nav-link'));
+const sectionMap = navLinks.map(link => {
+  const id = link.getAttribute('href');
+  return { id, link, el: document.querySelector(id) };
+}).filter(x => x.el);
 
-// ===== Back to top button
-document.addEventListener('DOMContentLoaded', () => {
-  const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (!backBtn) return;
-    backBtn.style.display = (window.scrollY > 600) ? 'block' : 'none';
+const spyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const item = sectionMap.find(s => s.el === entry.target);
+    if (!item) return;
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      item.link.classList.add('active');
+    }
   });
-  backBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-});
+}, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
 
-// ===== Copy contract
+sectionMap.forEach(s => spyObserver.observe(s.el));
+
+// ===== Back to top =====
+const backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backBtn.style.display = (window.scrollY > 600) ? 'block' : 'none';
+});
+backBtn?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// ===== Copy contract to clipboard =====
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('copyContractBtn');
   if (!btn) return;
   btn.addEventListener('click', async () => {
     try{
       await navigator.clipboard.writeText(btn.dataset.contract);
-      const old = btn.textContent;
       btn.textContent = 'Скопировано ✓';
-      setTimeout(()=> btn.textContent = old, 1200);
+      setTimeout(()=> btn.textContent = '$SKY контракт', 1200);
     }catch(e){ alert('Не удалось скопировать'); }
   });
 });
 
-// ===== Buy modal (open/close) + duplicate open buttons
+// ===== Buy Modal =====
 document.addEventListener('DOMContentLoaded', () => {
-  const openBtns = [document.getElementById('openBuyModal'), document.getElementById('buyBtn')];
+  const openBtn = document.getElementById('openBuyModal');
   const closeBtn = document.getElementById('closeBuyModal');
   const modal = document.getElementById('buyModal');
-
-  function openModal(){
-    if (!modal) return;
-    modal.classList.add('show');
-    modal.setAttribute('aria-hidden', 'false');
+  if(openBtn && modal){
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+    });
   }
-  function closeModal(){
-    if (!modal) return;
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden', 'true');
+  if(closeBtn && modal){
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+    });
   }
-
-  openBtns.forEach(b => b && b.addEventListener('click', openModal));
-  closeBtn && closeBtn.addEventListener('click', closeModal);
-  modal?.addEventListener('click', (e)=>{ if(e.target === modal){ closeModal(); }});
-  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+  // Close on outside click / Esc
+  modal?.addEventListener('click', (e)=>{ if(e.target === modal){ modal.classList.remove('show'); }});
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') modal?.classList.remove('show'); });
 });
 
-// ===== Preloader
+// ===== Preloader: hide after load or 1.2s fallback =====
 window.addEventListener('load', () => {
   const pl = document.getElementById('preloader');
   setTimeout(()=> pl?.classList.add('hidden'), 200);
 });
 
-// ===== Add token to MetaMask
+// ===== Lightweight particles behind features =====
+(function(){
+  const canvas = document.getElementById('fx-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  let w, h, points=[];
+
+  function resize(){
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = Math.floor(w * DPR); canvas.height = Math.floor(h * DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  window.addEventListener('resize', resize, {passive:true});
+  resize();
+
+  // init particles
+  const COUNT = Math.floor((w*h)/30000) + 30; // adaptive
+  function reset(){
+    points = new Array(COUNT).fill(0).map(()=> ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      vx: (Math.random()-.5)*0.3,
+      vy: (Math.random()-.5)*0.3,
+      r: Math.random()*1.6 + 0.6
+    }));
+  }
+  reset();
+
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = 'rgba(0,255,255,0.9)';
+    for(const p of points){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < -10) p.x = w+10; if(p.x > w+10) p.x = -10;
+      if(p.y < -10) p.y = h+10; if(p.y > h+10) p.y = -10;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+// ===== Add token to MetaMask =====
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('addToWalletBtn');
   if (!btn) return;
@@ -134,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         params: {
           type: 'ERC20',
           options: {
-            address: window.SKY.TOKEN_ADDRESS,
+            address: '0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8',
             symbol: 'SKY',
             decimals: 18,
             image: location.origin + '/logo.png'
@@ -146,38 +275,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== Add/Switch BSC Network (both buttons: in steps and in modal)
+
+// ===== Add BSC network (also for modal) =====
 document.addEventListener('DOMContentLoaded', () => {
   function addBSC(){
     if(!window.ethereum){ alert('MetaMask не найден'); return; }
-    window.ethereum.request({ method: 'eth_chainId' }).then((cid)=>{
-      if (cid === '0x38') return; // already on BSC
-      return window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x38' }]
-      }).catch((switchError) => {
-        if (switchError.code === 4902) {
-          return window.ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [{
-              chainId: '0x38',
-              chainName: 'BNB Smart Chain',
-              nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
-              rpcUrls: ['https://bsc-dataseed.binance.org/'],
-              blockExplorerUrls: ['https://bscscan.com']
-            }]
-          });
-        } else {
-          console.error(switchError);
-        }
-      });
+    window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: '0x38' }]
+    }).catch((switchError) => {
+      if (switchError.code === 4902) {
+        window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{
+            chainId: '0x38',
+            chainName: 'BNB Smart Chain',
+            nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+            rpcUrls: ['https://bsc-dataseed.binance.org/'],
+            blockExplorerUrls: ['https://bscscan.com']
+          }]
+        });
+      } else {
+        console.error(switchError);
+      }
     });
   }
-  const b1 = document.getElementById('addBSCBtn');
-  const b2 = document.getElementById('addBSCBtnModal');
-  b1 && b1.addEventListener('click', addBSC);
-  b2 && b2.addEventListener('click', addBSC);
+  const btn1 = document.getElementById('addBSCBtn');
+  if(btn1) btn1.addEventListener('click', addBSC);
+  const btn2 = document.getElementById('addBSCBtnModal');
+  if(btn2) btn2.addEventListener('click', addBSC);
 });
+
 
 // ===== Robust MetaMask connect with BSC switch/add =====
 async function connectWallet() {
@@ -217,13 +345,14 @@ async function connectWallet() {
       }
     }
 
-    // Show short address on both button and header span
+    // Show short address on button and (if present) header span
     const shortAddr = account.slice(0, 6) + '...' + account.slice(-4);
     const btn = document.getElementById('connectWalletBtn');
     if (btn) btn.textContent = shortAddr;
     const span = document.getElementById('wallet-address');
     if (span) span.textContent = shortAddr;
 
+    // Persist for later
     try { localStorage.setItem('walletAddress', account); } catch(e){}
 
   } catch (err) {
@@ -232,8 +361,9 @@ async function connectWallet() {
   }
 }
 
-// Attach handler to both hero & topbar (same id used)
+// Attach click handler if button exists
 document.addEventListener('DOMContentLoaded', () => {
-  const cw = document.getElementById('connectWalletBtn');
-  cw && cw.addEventListener('click', connectWallet);
+  const btn = document.getElementById('connectWalletBtn');
+  if (btn) btn.addEventListener('click', connectWallet);
 });
+
