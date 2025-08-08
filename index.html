@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Skynet Coin ($SKY) — AI × Blockchain</title>
+  <meta name="description" content="Skynet Coin ($SKY) — токен на BNB Chain с фокусом на AI. Быстро, безопасно, децентрализовано.">
+  <meta name="keywords" content="Skynet Coin, SKY, crypto, DAO, NFT, Web3, AI">
+  <meta name="author" content="Skynet Team">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Skynet Coin ($SKY)">
+  <meta property="og:description" content="AI встречается с Блокчейном. Прозрачно. Быстро. Надёжно.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="./social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="./favicon.svg">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="canonical" href="https://example.com/">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="./main.css">
+
+  <!-- Ethers v5 -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" defer></script>
+  <script src="./main.js" defer></script>
+</head>
+<body>
+  <nav class="lang-switch" aria-label="Язык">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('en')">EN</button>
+  </nav>
+
+  <header class="reveal">
+    <img id="site-logo" src="./logo.png" alt="Логотип Skynet Coin">
+    <h1 data-i18n="hero_title">Будущее крипты встречается с ИИ</h1>
+    <h2 data-i18n="hero_sub">Добро пожаловать в Skynet Coin</h2>
+    <p data-i18n="hero_p">Skynet Coin ($SKY) объединяет блокчейн и искусственный интеллект. Быстро, безопасно, децентрализовано.</p>
+    <div class="buttons">
+      <a class="button" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">BscScan</a>
+      <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">Купить $SKY</a>
+      <a class="button" href="#" onclick="connectWallet()">Подключить кошелёк</a>
+      <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="reveal">
+      <h2 data-i18n="about_h2">О проекте Skynet Coin</h2>
+      <p>Токен на BNB Chain с низкими комиссиями и возможностями AI.</p>
+    </section>
+
+    <section id="tokenomics" class="reveal">
+      <h2 data-i18n="tokenomics_h2">Токеномика</h2>
+      <p>Общий объём: <strong>1,000,000,000</strong> SKY</p>
+      <div class="buttons">
+        <a class="button" href="./skynetcoin_whitepaper.pdf" target="_blank" rel="noopener">Whitepaper</a>
+      </div>
+    </section>
+
+    <section id="roadmap" class="reveal">
+      <h2 data-i18n="roadmap_h2">Дорожная карта</h2>
+      <p>Фаза 1: Запуск • Фаза 2: Рост • Фаза 3: Utility</p>
+    </section>
+
+    <section id="community" class="reveal">
+      <h2 data-i18n="nftdao_h2">NFT / DAO / Utility</h2>
+      <div class="buttons">
+        <a class="button" href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter</a>
+        <a class="button" href="https://t.me/yourchannel" target="_blank" rel="noopener">Telegram</a>
+        <a class="button" href="mailto:info@skynetcoin.io">Email</a>
+        <a class="button" href="https://github.com/SkynetCoin1" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <section id="airdrop" class="reveal">
+      <h2 data-i18n="airdrop_h2">Получите Airdrop</h2>
+      <div class="buttons">
+        <a class="button" href="https://pancakeswap.finance/swap?outputCurrency=0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">PancakeSwap</a>
+        <a class="button" href="#" aria-disabled="true" title="Скоро">Claim $SKY</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="reveal" data-i18n="footer">Контакты: info@skynetcoin.io</footer>
+
+  <div class="visually-hidden" id="disclaimer">
+    Не финансовый совет. Криптоактивы связаны с рисками, включая полную потерю средств.
+  </div>
+</body>
+</html>

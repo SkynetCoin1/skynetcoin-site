@@ -1,0 +1,55 @@
+
+:root{
+  --bg:#000;
+  --primary:#00ffff;
+  --text:#00ffff;
+  --card:rgba(0,0,0,0.7);
+  --shadow0: 0 0 20px var(--primary);
+  --radius:12px;
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--text);
+  background: url('./background.png') no-repeat center/cover fixed, #000;
+  text-align:center;
+}
+header, section, footer{
+  padding:40px 20px;
+  background:var(--card);
+  box-shadow:var(--shadow0);
+  margin:20px;
+  border-radius:var(--radius);
+}
+a.button, .button, button{
+  display:inline-block;
+  margin:10px;
+  padding:12px 20px;
+  border:2px solid var(--primary);
+  border-radius:8px;
+  color:var(--primary);
+  text-decoration:none;
+  transition:all .25s ease;
+  background:transparent;
+  cursor:pointer;
+}
+a.button:hover, .button:hover, button:hover{
+  background:var(--primary);
+  color:#000;
+  box-shadow:0 0 10px var(--primary);
+}
+img{max-width:100%;height:auto}
+#site-logo{width:280px;filter:drop-shadow(0 0 15px rgba(0,255,255,1))}
+.lang-switch{position:fixed;top:16px;right:16px;z-index:1000}
+.lang-switch button{padding:6px 10px}
+.reveal{opacity:0;transform:translateY(30px);transition:all .6s ease-out}
+.reveal.active{opacity:1;transform:none}
+@media (max-width:768px){
+  body{font-size:16px;padding:10px}
+  section, footer{padding:20px 10px}
+  .button{display:block;margin:12px auto;width:90%}
+}
+.visually-hidden{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
