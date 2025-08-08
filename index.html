@@ -43,7 +43,7 @@
     <div class="group actions">
       <button class="button" id="openBuyModal">Купить $SKY</button>
       <button class="button" id="copyContractBtn" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8">$SKY контракт</button>
-      <button class="button" id="connectWalletBtn">Подключить кошелёк</button>
+      <button class="button" onclick="connectWallet()" id="connectWalletBtn">Подключить кошелёк</button>
     </div>
     <div class="divider" aria-hidden="true"></div>
     <div class="group navlinks">
@@ -63,7 +63,7 @@
     <div class="buttons">
       <a class="button" href="https://bscscan.com/token/0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" target="_blank" rel="noopener">BscScan</a>
       <button class="button" id="openBuyModal2">Купить $SKY</button>
-      <button class="button" id="connectWalletBtn2" type="button">Подключить кошелёк</button>
+      <a class="button" href="#" onclick="connectWallet()" id="connectWalletLink">Подключить кошелёк</a>
       <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
     </div>
   </header>
