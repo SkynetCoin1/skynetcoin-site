@@ -96,7 +96,7 @@ a.button:hover, .button:hover, button:hover{
   transform: translateY(-2px) scale(1.02);
 }
 a.button:focus-visible, .button:focus-visible, button:focus-visible{
-  outline: none;
+  
   box-shadow: 0 0 0 3px rgba(0,255,255,.35), 0 0 12px var(--primary);
   transform: translateY(-1px) scale(1.01);
 }
@@ -345,3 +345,9 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
 #how-to-buy .buttons{ display:flex; flex-wrap:wrap; gap:8px; }
 @media (max-width: 960px){ #how-to-buy .steps-grid{ grid-template-columns: repeat(2,1fr);}}
 @media (max-width: 540px){ #how-to-buy .steps-grid{ grid-template-columns: 1fr;}}
+
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

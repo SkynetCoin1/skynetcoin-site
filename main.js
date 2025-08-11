@@ -1,3 +1,4 @@
+function showToast(msg){alert(msg);}
 
 // ===== Project settings =====
 window.SKY = {
