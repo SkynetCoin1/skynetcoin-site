@@ -57,6 +57,54 @@ const T = {
     airdrop_p: "Follow our socials and connect your wallet to claim free $SKY tokens. Details in our Telegram channel.",
 
     footer: "Contact: " + window.SKY.CONTACT_EMAIL
+  
+    "skip_link": "Skip to content",
+  
+    "toast_action": "Refresh",
+  
+    "copy_contract_btn": "$SKY contract",
+  
+    "nav_about": "About",
+  
+    "nav_tokenomics": "Tokenomics",
+  
+    "nav_roadmap": "Roadmap",
+  
+    "nav_community": "Community",
+  
+    "nav_airdrop": "Airdrop",
+  
+    "nav_bscscan": "BscScan",
+  
+    "features_h2": "Why choose us",
+  
+    "feature_ai_h3": "AI integration",
+  
+    "feature_ai_p": "AI modules help analyze the market and automate decisions.",
+  
+    "feature_speed_h3": "Speed & fees",
+  
+    "feature_speed_p": "BNB Chain: fast transactions and low fees for everyone.",
+  
+    "feature_security_h3": "Security",
+  
+    "feature_security_p": "Transparent smart contract, open code and wallet protection.",
+  
+    "feature_decentral_h3": "Decentralization",
+  
+    "feature_decentral_p": "Voting via DAO and community participation in ecosystem growth.",
+  
+    "about_h2": "About Skynet Coin",
+  
+    "tokenomics_h2": "Tokenomics",
+  
+    "link_whitepaper": "Whitepaper",
+  
+    "roadmap_h2": "Roadmap",
+  
+    "community_h2": "NFT / DAO / Utility",
+  
+    "buy_h2": "How to buy $SKY",
   },
   ru: {
     hero_title: "Будущее криптовалюты управляемое ИИ",
@@ -84,6 +132,54 @@ const T = {
     airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк, чтобы получить бесплатные токены $SKY. Подробности — в Telegram-канале.",
 
     footer: "Контакты: " + window.SKY.CONTACT_EMAIL
+  
+    "skip_link": "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u043c\u0443",
+  
+    "toast_action": "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c",
+  
+    "copy_contract_btn": "$SKY \u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442",
+  
+    "nav_about": "\u041e \u043f\u0440\u043e\u0435\u043a\u0442\u0435",
+  
+    "nav_tokenomics": "\u0422\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0430",
+  
+    "nav_roadmap": "\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430",
+  
+    "nav_community": "\u0421\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u043e",
+  
+    "nav_airdrop": "Airdrop",
+  
+    "nav_bscscan": "BscScan",
+  
+    "features_h2": "\u041d\u0430\u0448\u0438 \u043f\u0440\u0435\u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u0430",
+  
+    "feature_ai_h3": "AI\u2011\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f",
+  
+    "feature_ai_p": "\u041c\u043e\u0434\u0443\u043b\u0438 \u0418\u0418 \u043f\u043e\u043c\u043e\u0433\u0430\u044e\u0442 \u0430\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u044b\u043d\u043e\u043a \u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u0435\u0448\u0435\u043d\u0438\u044f.",
+  
+    "feature_speed_h3": "\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0438 \u043a\u043e\u043c\u0438\u0441\u0441\u0438\u0438",
+  
+    "feature_speed_p": "BNB Chain: \u0431\u044b\u0441\u0442\u0440\u044b\u0435 \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u0438 \u0438 \u043d\u0438\u0437\u043a\u0438\u0435 \u043a\u043e\u043c\u0438\u0441\u0441\u0438\u0438 \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.",
+  
+    "feature_security_h3": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c",
+  
+    "feature_security_p": "\u041f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u0439 \u0441\u043c\u0430\u0440\u0442\u2011\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442, \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u043e\u0434 \u0438 \u0437\u0430\u0449\u0438\u0442\u0430 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430.",
+  
+    "feature_decentral_h3": "\u0414\u0435\u0446\u0435\u043d\u0442\u0440\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f",
+  
+    "feature_decentral_p": "\u0413\u043e\u043b\u043e\u0441\u043e\u0432\u0430\u043d\u0438\u0435 \u0447\u0435\u0440\u0435\u0437 DAO \u0438 \u0443\u0447\u0430\u0441\u0442\u0438\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430 \u0432 \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0438 \u044d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u044b.",
+  
+    "about_h2": "\u041e \u043f\u0440\u043e\u0435\u043a\u0442\u0435 Skynet Coin",
+  
+    "tokenomics_h2": "\u0422\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0430",
+  
+    "link_whitepaper": "Whitepaper",
+  
+    "roadmap_h2": "\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430",
+  
+    "community_h2": "NFT / DAO / Utility",
+  
+    "buy_h2": "\u041a\u0430\u043a \u043a\u0443\u043f\u0438\u0442\u044c $SKY",
   }
 };
 

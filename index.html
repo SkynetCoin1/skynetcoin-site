@@ -24,28 +24,28 @@
 <link href="https://skynetcoin.io/" rel="canonical"/>
 <link href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link href="./main.css" rel="stylesheet"/>
-<script crossorigin="anonymous" defer="" src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script defer="" src="/vendor/ethers.umd.min.js"></script>
 <script defer="True" src="./main.js"></script>
 <style>a.nav-link:visited{ color: var(--primary); }</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Skynet Coin", "url": "https://skynetcoin.io/", "logo": "https://skynetcoin.io/logo.png"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Skynet Coin", "url": "https://skynetcoin.io/"}</script><meta content="Skynet Coin" property="og:site_name"/><meta content="ru_RU" property="og:locale"/><link href="/site.webmanifest" rel="manifest"/><link href="/favicon.svg" rel="icon"/><link href="/icon-192x192.png" rel="apple-touch-icon"/><link color="#00ffff" href="/favicon.svg" rel="mask-icon"/><meta content="#00ffff" name="theme-color"/><link as="style" href="/main.css" rel="preload"/><link as="image" href="/background.png" imagesrcset="/background.png" rel="preload"/></head>
-<body><a class="skip-link" href="#main">Skip to content</a>
+<body><a class="skip-link" data-i18n="skip_link" href="#main">Skip to content</a>
 <!-- Parallax layer -->
-<div aria-hidden="true" id="parallax-bg"></div><button id="toast-action" class="toast-action" hidden>Обновить</button>
+<div aria-hidden="true" id="parallax-bg"></div><button class="toast-action" data-i18n="toast_action" hidden="" id="toast-action">Обновить</button>
 <nav aria-label="Language switch" class="lang-switch">
 <button data-lang="ru">RU</button>
 <button data-lang="en">EN</button>
 </nav>
 <nav aria-label="Main" class="reveal fade-up" id="topbar">
 <div class="group actions">
-<button class="button" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" id="copyContractBtn">$SKY контракт</button>
+<button class="button" data-contract="0x5eb08cfdbad39ff95418bb6283a471f45ec90bf8" data-i18n="copy_contract_btn" id="copyContractBtn">$SKY контракт</button>
 </div>
 <div aria-hidden="true" class="divider"></div>
 <div class="group navlinks">
-<a class="nav-link" href="#about">О проекте</a>
-<a class="nav-link" href="#tokenomics">Токеномика</a>
-<a class="nav-link" href="#roadmap">Дорожная карта</a>
-<a class="nav-link" href="#community">Сообщество</a>
-<a class="nav-link" href="#airdrop">Airdrop</a>
+<a class="nav-link" data-i18n="nav_about" href="#about">О проекте</a>
+<a class="nav-link" data-i18n="nav_tokenomics" href="#tokenomics">Токеномика</a>
+<a class="nav-link" data-i18n="nav_roadmap" href="#roadmap">Дорожная карта</a>
+<a class="nav-link" data-i18n="nav_community" href="#community">Сообщество</a>
+<a class="nav-link" data-i18n="nav_airdrop" href="#airdrop">Airdrop</a>
 </div>
 </nav>
 <header class="reveal">
@@ -62,7 +62,7 @@
 <!-- Features section with animated particles background -->
 <section class="reveal fade-up" id="features">
 <div aria-hidden="true" id="features-bg"><canvas id="fx-canvas"></canvas></div>
-<h2>Наши преимущества</h2>
+<h2 data-i18n="features_h2">Наши преимущества</h2>
 <div class="features-grid">
 <article class="feature-card">
 <div aria-hidden="true" class="icon">
@@ -72,8 +72,8 @@
 <path d="M8 12h8M12 8v8"></path>
 </svg>
 </div>
-<h3>AI‑интеграция</h3>
-<p>Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
+<h3 data-i18n="feature_ai_h3">AI‑интеграция</h3>
+<p data-i18n="feature_ai_p">Модули ИИ помогают анализировать рынок и автоматизировать решения.</p>
 </article>
 <article class="feature-card">
 <div aria-hidden="true" class="icon">
@@ -83,8 +83,8 @@
 <path d="M21 3v4h-4"></path>
 </svg>
 </div>
-<h3>Скорость и комиссии</h3>
-<p>BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
+<h3 data-i18n="feature_speed_h3">Скорость и комиссии</h3>
+<p data-i18n="feature_speed_p">BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.</p>
 </article>
 <article class="feature-card">
 <div aria-hidden="true" class="icon">
@@ -93,8 +93,8 @@
 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
 </svg>
 </div>
-<h3>Безопасность</h3>
-<p>Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
+<h3 data-i18n="feature_security_h3">Безопасность</h3>
+<p data-i18n="feature_security_p">Прозрачный смарт‑контракт, открытый код и защита кошелька.</p>
 </article>
 <article class="feature-card">
 <div aria-hidden="true" class="icon">
@@ -105,17 +105,17 @@
 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
 </svg>
 </div>
-<h3>Децентрализация</h3>
-<p>Голосование через DAO и участие сообщества в развитии экосистемы.</p>
+<h3 data-i18n="feature_decentral_h3">Децентрализация</h3>
+<p data-i18n="feature_decentral_p">Голосование через DAO и участие сообщества в развитии экосистемы.</p>
 </article>
 </div>
 </section>
 <section class="reveal fade-left" id="about">
-<h2>О проекте Skynet Coin</h2>
+<h2 data-i18n="about_h2">О проекте Skynet Coin</h2>
 <p data-i18n="about_p1">Skynet Coin ($SKY) объединяет блокчейн и ИИ...</p>
 </section>
 <section class="reveal fade-right" id="tokenomics">
-<h2>Токеномика</h2>
+<h2 data-i18n="tokenomics_h2">Токеномика</h2>
 <ul class="feature-list">
 <li data-i18n="tokenomics_1">Общий объём: 1,000,000,000 SKY</li>
 <li data-i18n="tokenomics_2">Ликвидность и биржи — 40%</li>
@@ -124,11 +124,11 @@
 <li data-i18n="tokenomics_5">Резервный фонд — 10%</li>
 </ul>
 <div class="buttons">
-<a class="button" href="./skynetcoin_whitepaper.pdf" rel="noopener" target="_blank">Whitepaper</a>
+<a class="button" data-i18n="link_whitepaper" href="./skynetcoin_whitepaper.pdf" rel="noopener" target="_blank">Whitepaper</a>
 </div>
 </section>
 <section class="reveal fade-up" id="roadmap">
-<h2>Дорожная карта</h2>
+<h2 data-i18n="roadmap_h2">Дорожная карта</h2>
 <ul class="feature-list">
 <li data-i18n="roadmap_1">Q1 2025 — Запуск токена и сайта</li>
 <li data-i18n="roadmap_2">Q2 2025 — Листинг на DEX и запуск NFT‑платформы</li>
@@ -137,7 +137,7 @@
 </ul>
 </section>
 <section class="reveal fade-left" id="community">
-<h2>NFT / DAO / Utility</h2>
+<h2 data-i18n="community_h2">NFT / DAO / Utility</h2>
 <ul class="feature-list">
 <li data-i18n="nftdao_1">NFT с уникальными AI‑генерированными артами</li>
 <li data-i18n="nftdao_2">Голосование в DAO за развитие проекта</li>
