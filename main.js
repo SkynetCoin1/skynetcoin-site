@@ -651,3 +651,58 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
+
+
+// === PWA update UX ===
+function showUpdateToast(message = 'Доступна новая версия') {
+  const toast = document.getElementById('toast');
+  const btn = document.getElementById('toast-action');
+  if(!toast || !btn){ return; }
+  toast.textContent = message;
+  toast.hidden = false;
+  btn.hidden = false;
+}
+
+(function setupSWUpdateFlow(){
+  if(!('serviceWorker' in navigator)) return;
+  let waitingSW = null;
+
+  function listenForWaiting(reg){
+    if (reg.waiting) {
+      waitingSW = reg.waiting;
+      showUpdateToast('Доступна новая версия. Обновить сейчас?');
+    }
+    reg.addEventListener('updatefound', () => {
+      const nw = reg.installing;
+      if (!nw) return;
+      nw.addEventListener('statechange', () => {
+        if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+          waitingSW = reg.waiting;
+          showUpdateToast('Доступна новая версия. Обновить сейчас?');
+        }
+      });
+    });
+  }
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if(!reg) return;
+      listenForWaiting(reg);
+    });
+  });
+
+  const btn = document.getElementById('toast-action');
+  if(btn){
+    btn.addEventListener('click', () => {
+      if(waitingSW){
+        waitingSW.postMessage({type: 'SKIP_WAITING'});
+      }
+    });
+  }
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    // новый SW активировался — перезагрузим страницу
+    window.location.reload();
+  });
+})();
+
