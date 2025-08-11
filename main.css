@@ -380,3 +380,8 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
 @media (max-width: 768px){
   body::before{ background-attachment: scroll !important; }
 }
+
+
+/* Toast component */
+.toast{position:fixed;right:1rem;bottom:1rem;background:rgba(0,0,0,.85);color:#fff;padding:.75rem 1rem;border-radius:.75rem}
+.toast[hidden]{display:none}

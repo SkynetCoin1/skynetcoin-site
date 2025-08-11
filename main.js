@@ -524,3 +524,35 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   });
 }
+
+
+// === Injected enhancements ===
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      if (typeof setLang === 'function') setLang(lang);
+    });
+  });
+});
+
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.getRegistration().then(r => {
+      const registerSW = (reg) => {
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          nw && nw.addEventListener('statechange', () => {
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+              showToast('Доступна новая версия. Обновите страницу.');
+            }
+          });
+        });
+      };
+      if (r) registerSW(r);
+      else navigator.serviceWorker.register('/sw.js').then(registerSW);
+    });
+  });
+}

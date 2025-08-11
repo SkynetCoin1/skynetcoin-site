@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html lang="ru">
-<head>
+<head><link crossorigin="anonymous" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Skynet Coin ($SKY) — AI × Blockchain</title>
@@ -25,15 +25,15 @@
 <link href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link href="./main.css" rel="stylesheet"/>
 <script crossorigin="anonymous" defer="" src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-<script defer="" src="./main.js"></script>
+<script defer="True" src="./main.js"></script>
 <style>a.nav-link:visited{ color: var(--primary); }</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Skynet Coin", "url": "https://skynetcoin.io/", "logo": "https://skynetcoin.io/logo.png"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Skynet Coin", "url": "https://skynetcoin.io/"}</script><meta content="Skynet Coin" property="og:site_name"/><meta content="ru_RU" property="og:locale"/></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Skynet Coin", "url": "https://skynetcoin.io/", "logo": "https://skynetcoin.io/logo.png"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Skynet Coin", "url": "https://skynetcoin.io/"}</script><meta content="Skynet Coin" property="og:site_name"/><meta content="ru_RU" property="og:locale"/><link href="/site.webmanifest" rel="manifest"/><link href="/favicon.svg" rel="icon"/><link href="/icon-192x192.png" rel="apple-touch-icon"/><link color="#00ffff" href="/favicon.svg" rel="mask-icon"/><meta content="#00ffff" name="theme-color"/><link as="style" href="/main.css" rel="preload"/><link as="image" href="/background.png" imagesrcset="/background.png" rel="preload"/></head>
 <body><a class="skip-link" href="#main">Skip to content</a>
 <!-- Parallax layer -->
 <div aria-hidden="true" id="parallax-bg"></div>
 <nav aria-label="Language switch" class="lang-switch">
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('en')">EN</button>
+<button data-lang="ru">RU</button>
+<button data-lang="en">EN</button>
 </nav>
 <nav aria-label="Main" class="reveal fade-up" id="topbar">
 <div class="group actions">
@@ -258,5 +258,5 @@ document.addEventListener('DOMContentLoaded', function(){
   removeByText('Подключить кошелёк');
 });
 </script>
-</div></body>
+</div><div aria-live="polite" class="toast" hidden="True" id="toast" role="status"></div></body>
 </html>
