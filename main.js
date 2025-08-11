@@ -556,3 +556,98 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+
+// === Auto-bind data-event-* handlers ===
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('*').forEach(el => {
+    Array.from(el.attributes).forEach(attr => {
+      if (attr.name.startsWith('data-event-')) {
+        const eventType = attr.name.replace('data-event-', '');
+        try {
+          const fn = new Function(attr.value);
+          el.addEventListener(eventType, fn);
+        } catch(e) {
+          console.error('Failed to bind inline handler for', el, e);
+        }
+      }
+    });
+  });
+});
+
+
+// === Global inline-handlers delegator (no inline, CSP-safe) ===
+(function(){
+  const parseCall = (s) => {
+    // поддержка формата fnName('a', 1, true)
+    const m = s && s.trim().match(/^([a-zA-Z_$][\w$]*)\s*\((.*)\)\s*$/);
+    if(!m) return null;
+    const fn = m[1];
+    const argsStr = m[2].trim();
+    if(!argsStr) return {fn, args: []};
+    // безопасный разбор аргументов: строки/числа/true/false/null
+    const args = [];
+    let buf = ''; let inStr = false; let quote = '';
+    for (let i=0;i<argsStr.length;i++){
+      const ch = argsStr[i];
+      if(inStr){
+        buf += ch;
+        if(ch === quote && argsStr[i-1] !== '\\'){ inStr = false; }
+      }else{
+        if(ch === "'" || ch === '"'){ inStr = true; quote = ch; buf += ch; }
+        else if(ch === ','){ if(buf.trim()) args.push(buf.trim()); buf=''; }
+        else { buf += ch; }
+      }
+    }
+    if(buf.trim()) args.push(buf.trim());
+    const norm = args.map(a=>{
+      if(/^['"].*['"]$/.test(a)) return a.slice(1,-1);
+      if(/^(true|false)$/i.test(a)) return a.toLowerCase()==='true';
+      if(/^null$/i.test(a)) return null;
+      const n = Number(a);
+      return Number.isNaN(n) ? a : n;
+    });
+    return {fn, args: norm};
+  };
+
+  document.addEventListener('click', (e) => {
+    const path = e.composedPath ? e.composedPath() : (function(){ let p=[],el=e.target; while(el){p.push(el); el=el.parentElement;} return p; })();
+    for(const el of path){
+      if(!el || !el.getAttribute) continue;
+      const call = el.getAttribute('data-onclick');
+      if(call){
+        const parsed = parseCall(call);
+        if(parsed && typeof window[parsed.fn] === 'function'){
+          e.preventDefault();
+          try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
+        }
+        break;
+      }
+    }
+  });
+
+  // Аналогично для change/submit по необходимости
+  document.addEventListener('change', (e) => {
+    const el = e.target;
+    const call = el && el.getAttribute && el.getAttribute('data-onchange');
+    if(call){
+      const parsed = parseCall(call);
+      if(parsed && typeof window[parsed.fn] === 'function'){
+        try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
+      }
+    }
+  });
+
+  document.addEventListener('submit', (e) => {
+    const el = e.target;
+    const call = el && el.getAttribute && el.getAttribute('data-onsubmit');
+    if(call){
+      e.preventDefault();
+      const parsed = parseCall(call);
+      if(parsed && typeof window[parsed.fn] === 'function'){
+        try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
+      }
+    }
+  });
+})();
+
