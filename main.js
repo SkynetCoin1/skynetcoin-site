@@ -1,15 +1,3 @@
-
-// Enable progressive enhancement animations only if JS init succeeds
-(function(){
-  try{
-    document.documentElement.classList.add('enhance');
-    window.addEventListener('error', function onceErr(){
-      document.documentElement.classList.remove('enhance');
-      window.removeEventListener('error', onceErr, {capture:false});
-    });
-  }catch(e){/* ignore */}
-})();
-
 function showToast(msg){alert(msg);}
 
 // ===== Project settings =====
@@ -44,136 +32,88 @@ window.addEventListener('scroll', parallaxTick);
 // ===== i18n content =====
 const T = {
   en: {
-    about_h2: "About Skynet Coin",
-    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ...",
-    airdrop_p: "Subscribe to our social networks and connect your wallet...",
-    community_h2: "NFT / DAO / Utility",
-    copy_contract_btn: "$SKY contract",
-    feature_ai_h3: "AI integration",
-    feature_ai_p: "AI modules help analyze the market and automate decisions.",
-    feature_decentral_h3: "Decentralization",
-    feature_decentral_p: "DAO voting and community‑driven development.",
-    feature_security_h3: "Security",
-    feature_security_p: "Transparent smart contract, open code, and protection against common attack vectors.",
-    feature_speed_h3: "Speed & fees",
-    feature_speed_p: "BNB Chain: fast transactions and low fees for everyday use.",
-    features_h2: "Why choose us",
-    footer: "Contacts: info@skynetcoin.io",
-    hero_p: "A decentralized token on BNB Chain, built for speed, security, and real AI utility.",
-    hero_sub: "Skynet Coin — the synergy of blockchain and artificial intelligence",
-    hero_title: "The AI‑Driven Future of Cryptocurrency",
-    link_whitepaper: "Whitepaper",
-    nav_about: "About",
-    nav_airdrop: "Airdrop",
-    nav_community: "Community",
-    nav_roadmap: "Roadmap",
-    nav_tokenomics: "Tokenomics",
-    nftdao_1: "NFT with unique AI‑generated art",
-    nftdao_2: "DAO voting for project development",
-    nftdao_3: "AI tools for market analysis",
-    nftdao_4: "Access to members‑only community events",
-    roadmap_1: "Q1 2025 — Token and website launch",
-    roadmap_2: "Q2 2025 — DEX listing and NFT platform launch",
-    roadmap_3: "Q3 2025 — AI modules integration and DAO launch",
-    roadmap_4: "Q4 2025 — CEX listing and mobile app",
-    roadmap_h2: "Roadmap",
-    skip_link: "Skip to content",
-    tokenomics_1: "Liquidity — 20%",
-    tokenomics_2: "Team & Advisors — 20%",
-    tokenomics_3: "Ecosystem growth — 30%",
+    hero_title: "The AI-Powered Future of Cryptocurrency",
+    hero_sub: "Skynet Coin — synergy of blockchain and artificial intelligence",
+    hero_p: "A decentralized token on BNB Chain, built for speed, security, and real AI solutions.",
+
+    about_p1: "Skynet Coin ($SKY) combines blockchain and AI. We are building an ecosystem where AI assists in investment decisions, DAO governance, and automated trading.",
+
+    tokenomics_1: "Total supply: 1,000,000,000 SKY",
+    tokenomics_2: "Liquidity & Exchanges — 40%",
+    tokenomics_3: "Ecosystem development — 30%",
     tokenomics_4: "Marketing & Partnerships — 20%",
     tokenomics_5: "Reserve fund — 10%",
-    tokenomics_h2: "Tokenomics"
-  },
 
+    roadmap_1: "Q1 2025 — Token & website launch",
+    roadmap_2: "Q2 2025 — DEX listing & NFT platform launch",
+    roadmap_3: "Q3 2025 — AI modules integration & DAO launch",
+    roadmap_4: "Q4 2025 — CEX listing & mobile app launch",
+
+    nftdao_1: "NFTs with unique AI-generated art",
+    nftdao_2: "DAO voting for project development",
+    nftdao_3: "AI-powered market analysis tools",
+    nftdao_4: "Access to exclusive community events",
+
+    airdrop_p: "Follow our socials and connect your wallet to claim free $SKY tokens. Details in our Telegram channel.",
+
+    footer: "Contact: " + window.SKY.CONTACT_EMAIL
+  },
   ru: {
-    about_h2: "О проекте Skynet Coin",
-    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ...",
-    airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк...",
-    community_h2: "NFT / DAO / Utility",
-    copy_contract_btn: "$SKY контракт",
-    feature_ai_h3: "AI‑интеграция",
-    feature_ai_p: "Модули ИИ помогают анализировать рынок и автоматизировать решения.",
-    feature_decentral_h3: "Децентрализация",
-    feature_decentral_p: "Голосование через DAO и участие сообщества в развитии экосистемы.",
-    feature_security_h3: "Безопасность",
-    feature_security_p: "Прозрачный смарт‑контракт, открытый код и защита кошелька.",
-    feature_speed_h3: "Скорость и комиссии",
-    feature_speed_p: "BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.",
-    features_h2: "Наши преимущества",
-    footer: "Контакты: info@skynetcoin.io",
-    hero_p: "Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.",
-    hero_sub: "Skynet Coin — синергия блокчейна и искусственного интеллекта",
     hero_title: "Будущее криптовалюты управляемое ИИ",
-    link_whitepaper: "Whitepaper",
-    nav_about: "О проекте",
-    nav_airdrop: "Airdrop",
-    nav_community: "Сообщество",
-    nav_roadmap: "Дорожная карта",
-    nav_tokenomics: "Токеномика",
-    nftdao_1: "NFT с уникальными AI‑генерированными артами",
-    nftdao_2: "Голосование в DAO за развитие проекта",
-    nftdao_3: "AI‑инструменты для анализа рынка",
-    nftdao_4: "Доступ к закрытым мероприятиям сообщества",
-    roadmap_1: "Q1 2025 — Запуск токена и сайта",
-    roadmap_2: "Q2 2025 — Листинг на DEX и запуск NFT‑платформы",
-    roadmap_3: "Q3 2025 — Интеграция AI‑модулей и запуск DAO",
-    roadmap_4: "Q4 2025 — Листинг на CEX и мобильное приложение",
-    roadmap_h2: "Дорожная карта",
-    skip_link: "Skip to content",
+    hero_sub: "Skynet Coin — синергия блокчейна и искусственного интеллекта",
+    hero_p: "Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.",
+
+    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ. Мы строим экосистему, где AI помогает принимать инвестиционные решения, управлять DAO и автоматизировать торговлю.",
+
     tokenomics_1: "Общий объём: 1,000,000,000 SKY",
     tokenomics_2: "Ликвидность и биржи — 40%",
     tokenomics_3: "Развитие экосистемы — 30%",
     tokenomics_4: "Маркетинг и партнёрства — 20%",
     tokenomics_5: "Резервный фонд — 10%",
-    tokenomics_h2: "Токеномика"
+
+    roadmap_1: "Q1 2025 — Запуск токена и сайта",
+    roadmap_2: "Q2 2025 — Листинг на DEX и запуск NFT-платформы",
+    roadmap_3: "Q3 2025 — Интеграция AI-модулей и запуск DAO",
+    roadmap_4: "Q4 2025 — Листинг на CEX и мобильное приложение",
+
+    nftdao_1: "NFT с уникальными AI-генерированными артами",
+    nftdao_2: "Голосование в DAO за развитие проекта",
+    nftdao_3: "AI‑инструменты для анализа рынка",
+    nftdao_4: "Доступ к закрытым мероприятиям сообщества",
+
+    airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк, чтобы получить бесплатные токены $SKY. Подробности — в Telegram-канале.",
+
+    footer: "Контакты: " + window.SKY.CONTACT_EMAIL
   }
 };
 
 
 function setLang(lang){
-    localStorage.setItem('lang', lang);
-    document.documentElement.lang = lang;
-    const trans = T[lang] || T['ru'];
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+  document.documentElement.lang = lang;
+  const trans = (typeof T !== 'undefined' && T[lang]) ? T[lang] : (T && T['ru']) || {};
 
-    document.querySelectorAll('[data-lang]').forEach(btn => {
-        if(btn.getAttribute('data-lang') === lang){
-            btn.classList.add('active-lang');
-        } else {
-            btn.classList.remove('active-lang');
-        }
-    });
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.classList.toggle('active-lang', btn.getAttribute('data-lang') === lang);
+  });
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if(trans[key] !== undefined){
-            el.innerHTML = trans[key];
-            console.log('[i18n] Updated key:', key);
-        } else {
-            console.warn('[i18n] Missing key in dictionary:', key);
-        }
-    });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (key in trans) {
+      el.innerHTML = trans[key];
+      console.log('[i18n] Updated key:', key);
+    } else {
+      console.warn('[i18n] Missing key:', key);
+    }
+  });
 }
 
-// Observe DOM changes to re-apply translations
-const i18nObserver = new MutationObserver(() => {
-    const currentLang = localStorage.getItem('lang') || 'ru';
-    const trans = T[currentLang] || T['ru'];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if(trans[key] !== undefined){
-            el.innerHTML = trans[key];
-        }
-    });
-});
-i18nObserver.observe(document.body, { childList: true, subtree: true });
 }
 
-window.addEventListener("DOMContentLoaded", ()=>{ try {
+window.addEventListener("DOMContentLoaded", ()=>{
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   setLang(localStorage.getItem('lang') || 'ru');
   parallaxTick();
-} catch(e){ console.error(e); document.documentElement.classList.remove("enhance"); }
 });
 
 // ===== Wallet connect (MetaMask) =====
@@ -594,210 +534,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register Service Worker for offline caching (relative path for GitHub Pages)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js', { scope: './' }).catch(() => {});
   });
 }
 
-
-// === Injected enhancements ===
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-lang]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      if (typeof setLang === 'function') setLang(lang);
-    });
+try {
+  const i18nObserver = new MutationObserver(() => {
+    const currentLang = (localStorage && localStorage.getItem('lang')) || 'ru';
+    if (typeof setLang === 'function') setLang(currentLang);
   });
-});
-
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.getRegistration().then(r => {
-      const registerSW = (reg) => {
-        reg.addEventListener('updatefound', () => {
-          const nw = reg.installing;
-          nw && nw.addEventListener('statechange', () => {
-            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-              showToast('Доступна новая версия. Обновите страницу.');
-            }
-          });
-        });
-      };
-      if (r) registerSW(r);
-      else navigator.serviceWorker.register('/sw.js').then(registerSW);
-    });
-  });
-}
-
-
-// === Auto-bind data-event-* handlers ===
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('*').forEach(el => {
-    Array.from(el.attributes).forEach(attr => {
-      if (attr.name.startsWith('data-event-')) {
-        const eventType = attr.name.replace('data-event-', '');
-        try {
-          const fn = new Function(attr.value);
-          el.addEventListener(eventType, fn);
-        } catch(e) {
-          console.error('Failed to bind inline handler for', el, e);
-        }
-      }
-    });
-  });
-});
-
-
-// === Global inline-handlers delegator (no inline, CSP-safe) ===
-(function(){
-  const parseCall = (s) => {
-    // поддержка формата fnName('a', 1, true)
-    const m = s && s.trim().match(/^([a-zA-Z_$][\w$]*)\s*\((.*)\)\s*$/);
-    if(!m) return null;
-    const fn = m[1];
-    const argsStr = m[2].trim();
-    if(!argsStr) return {fn, args: []};
-    // безопасный разбор аргументов: строки/числа/true/false/null
-    const args = [];
-    let buf = ''; let inStr = false; let quote = '';
-    for (let i=0;i<argsStr.length;i++){
-      const ch = argsStr[i];
-      if(inStr){
-        buf += ch;
-        if(ch === quote && argsStr[i-1] !== '\\'){ inStr = false; }
-      }else{
-        if(ch === "'" || ch === '"'){ inStr = true; quote = ch; buf += ch; }
-        else if(ch === ','){ if(buf.trim()) args.push(buf.trim()); buf=''; }
-        else { buf += ch; }
-      }
-    }
-    if(buf.trim()) args.push(buf.trim());
-    const norm = args.map(a=>{
-      if(/^['"].*['"]$/.test(a)) return a.slice(1,-1);
-      if(/^(true|false)$/i.test(a)) return a.toLowerCase()==='true';
-      if(/^null$/i.test(a)) return null;
-      const n = Number(a);
-      return Number.isNaN(n) ? a : n;
-    });
-    return {fn, args: norm};
-  };
-
-  document.addEventListener('click', (e) => {
-    const path = e.composedPath ? e.composedPath() : (function(){ let p=[],el=e.target; while(el){p.push(el); el=el.parentElement;} return p; })();
-    for(const el of path){
-      if(!el || !el.getAttribute) continue;
-      const call = el.getAttribute('data-onclick');
-      if(call){
-        const parsed = parseCall(call);
-        if(parsed && typeof window[parsed.fn] === 'function'){
-          e.preventDefault();
-          try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
-        }
-        break;
-      }
-    }
-  });
-
-  // Аналогично для change/submit по необходимости
-  document.addEventListener('change', (e) => {
-    const el = e.target;
-    const call = el && el.getAttribute && el.getAttribute('data-onchange');
-    if(call){
-      const parsed = parseCall(call);
-      if(parsed && typeof window[parsed.fn] === 'function'){
-        try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
-      }
-    }
-  });
-
-  document.addEventListener('submit', (e) => {
-    const el = e.target;
-    const call = el && el.getAttribute && el.getAttribute('data-onsubmit');
-    if(call){
-      e.preventDefault();
-      const parsed = parseCall(call);
-      if(parsed && typeof window[parsed.fn] === 'function'){
-        try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
-      }
-    }
-  });
-})();
-
-
-
-// === PWA update UX ===
-function showUpdateToast(message = 'Доступна новая версия') {
-  const toast = document.getElementById('toast');
-  const btn = document.getElementById('toast-action');
-  if(!toast || !btn){ return; }
-  toast.textContent = message;
-  toast.hidden = false;
-  btn.hidden = false;
-}
-
-(function setupSWUpdateFlow(){
-  if(!('serviceWorker' in navigator)) return;
-  let waitingSW = null;
-
-  function listenForWaiting(reg){
-    if (reg.waiting) {
-      waitingSW = reg.waiting;
-      showUpdateToast('Доступна новая версия. Обновить сейчас?');
-    }
-    reg.addEventListener('updatefound', () => {
-      const nw = reg.installing;
-      if (!nw) return;
-      nw.addEventListener('statechange', () => {
-        if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-          waitingSW = reg.waiting;
-          showUpdateToast('Доступна новая версия. Обновить сейчас?');
-        }
-      });
-    });
-  }
-
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.getRegistration().then(reg => {
-      if(!reg) return;
-      listenForWaiting(reg);
-    });
-  });
-
-  const btn = document.getElementById('toast-action');
-  if(btn){
-    btn.addEventListener('click', () => {
-      if(waitingSW){
-        waitingSW.postMessage({type: 'SKIP_WAITING'});
-      }
-    });
-  }
-
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    // новый SW активировался — перезагрузим страницу
-    window.location.reload();
-  });
-})();
-
-
-
-// Log missing i18n keys on page load
-window.addEventListener('DOMContentLoaded', () => {
-    const langs = ['ru','en'];
-    const missing = {ru: [], en: []};
-    langs.forEach(lang => {
-        const trans = T[lang] || {};
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if(!(key in trans)){
-                if(!missing[lang].includes(key)){
-                    missing[lang].push(key);
-                }
-            }
-        });
-    });
-    console.group('[i18n] Missing keys report');
-    console.log('Missing in RU:', missing.ru);
-    console.log('Missing in EN:', missing.en);
-    console.groupEnd();
-});
+  i18nObserver.observe(document.body, { childList: true, subtree: true });
+} catch(e) {}
