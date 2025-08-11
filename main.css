@@ -361,3 +361,22 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
 }
 
 header, main, footer { position: relative; z-index: 1; }
+
+@media (max-width: 1024px), 
+       (pointer: coarse), 
+       (-webkit-touch-callout: none) {
+  #parallax-bg {
+    background-attachment: scroll !important;
+    transform: translateZ(0);
+  }
+}
+
+
+/* --- Mobile & Telegram WebView background fix --- */
+@media (max-width: 1024px), (pointer: coarse), (-webkit-touch-callout: none) {
+  #parallax-bg {
+    background-attachment: scroll !important;
+    transform: translateZ(0);
+    will-change: transform, background-position;
+  }
+}
