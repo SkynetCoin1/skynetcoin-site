@@ -14,21 +14,21 @@
 <meta content="Skynet Coin ($SKY) — AI × Blockchain. Децентрализованный токен на BNB Chain c реальными AI-утилити." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://skynetcoin.io/" property="og:url"/>
-<meta content="./social-preview.jpg" property="og:image"/>
+<meta content="https://skynetcoin.io/social-preview.jpg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Skynet Coin ($SKY)" name="twitter:title"/>
 <meta content="AI × Blockchain. Fast. Secure. Decentralized." name="twitter:description"/>
-<meta content="./social-preview.jpg" name="twitter:image"/>
+<meta content="https://skynetcoin.io/social-preview.jpg" name="twitter:image"/>
 <link href="./favicon.svg" rel="icon"/>
 <link href="./site.webmanifest" rel="manifest"/>
 <link href="https://skynetcoin.io/" rel="canonical"/>
 <link href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link href="./main.css" rel="stylesheet"/>
-<script defer="" src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script crossorigin="anonymous" defer="" src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <script defer="" src="./main.js"></script>
 <style>a.nav-link:visited{ color: var(--primary); }</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Skynet Coin", "url": "https://skynetcoin.io/", "logo": "https://skynetcoin.io/logo.png"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Skynet Coin", "url": "https://skynetcoin.io/"}</script></head>
-<body>
+<meta content="SkynetCoin" property="og:site_name"/><meta content="ru_RU" property="og:locale"/></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
 <!-- Parallax layer -->
 <div aria-hidden="true" id="parallax-bg"></div>
 <nav aria-label="Language switch" class="lang-switch">
@@ -58,7 +58,7 @@
 <span id="wallet-address" style="margin-left:10px;font-weight:700"></span>
 </div>
 </header>
-<main>
+<main id="main">
 <!-- Features section with animated particles background -->
 <section class="reveal fade-up" id="features">
 <div aria-hidden="true" id="features-bg"><canvas id="fx-canvas"></canvas></div>
@@ -244,19 +244,6 @@
 <div aria-hidden="true" id="preloader">
 <div class="spinner"></div>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  function removeByText(txt){
-    const candidates = Array.from(document.querySelectorAll('a,button'));
-    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
-    if (el && el.parentElement) el.parentElement.removeChild(el);
-  }
-  // Удаляем 3 кнопки
-  removeByText('Подключить кошелёк');
-  removeByText('Купить $SKY');
-  // На случай дубля в шапке и в hero — удалим второй раз, если есть
-  removeByText('Подключить кошелёк');
-});
-</script>
+
 </div></body>
 </html>

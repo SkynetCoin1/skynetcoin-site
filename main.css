@@ -351,3 +351,32 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+
+/* Accessibility: skip link */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus{
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: .75rem 1rem;
+  background: #fff;
+  color: #111;
+  outline: 2px solid currentColor;
+  border-radius: .5rem;
+  z-index: 10000;
+}
+
+/* Mobile performance: avoid fixed background on mobile */
+@media (max-width: 768px){
+  body::before{ background-attachment: scroll !important; }
+}
