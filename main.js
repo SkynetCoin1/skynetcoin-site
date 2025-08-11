@@ -130,14 +130,43 @@ const T = {
   }
 };
 
+
 function setLang(lang){
-  localStorage.setItem('lang', lang);
-  document.documentElement.lang = lang;
-  const trans = T[lang] || T['ru'];
-  for(const [key,val] of Object.entries(trans)){
-    const els = document.querySelectorAll('[data-i18n="'+key+'"]');
-    els.forEach(el => el.textContent = val);
-  }
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    const trans = T[lang] || T['ru'];
+
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+        if(btn.getAttribute('data-lang') === lang){
+            btn.classList.add('active-lang');
+        } else {
+            btn.classList.remove('active-lang');
+        }
+    });
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(trans[key] !== undefined){
+            el.innerHTML = trans[key];
+            console.log('[i18n] Updated key:', key);
+        } else {
+            console.warn('[i18n] Missing key in dictionary:', key);
+        }
+    });
+}
+
+// Observe DOM changes to re-apply translations
+const i18nObserver = new MutationObserver(() => {
+    const currentLang = localStorage.getItem('lang') || 'ru';
+    const trans = T[currentLang] || T['ru'];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(trans[key] !== undefined){
+            el.innerHTML = trans[key];
+        }
+    });
+});
+i18nObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 window.addEventListener("DOMContentLoaded", ()=>{ try {
