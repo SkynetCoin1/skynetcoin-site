@@ -1,3 +1,15 @@
+
+// Enable progressive enhancement animations only if JS init succeeds
+(function(){
+  try{
+    document.documentElement.classList.add('enhance');
+    window.addEventListener('error', function onceErr(){
+      document.documentElement.classList.remove('enhance');
+      window.removeEventListener('error', onceErr, {capture:false});
+    });
+  }catch(e){/* ignore */}
+})();
+
 function showToast(msg){alert(msg);}
 
 // ===== Project settings =====
@@ -128,10 +140,11 @@ function setLang(lang){
   }
 }
 
-window.addEventListener("DOMContentLoaded", ()=>{
+window.addEventListener("DOMContentLoaded", ()=>{ try {
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   setLang(localStorage.getItem('lang') || 'ru');
   parallaxTick();
+} catch(e){ console.error(e); document.documentElement.classList.remove("enhance"); }
 });
 
 // ===== Wallet connect (MetaMask) =====

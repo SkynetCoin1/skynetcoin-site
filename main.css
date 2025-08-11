@@ -55,8 +55,8 @@ img{max-width:100%;height:auto}
 #site-logo{width:280px;filter:drop-shadow(0 0 15px rgba(0,255,255,1))}
 
 /* Reveal animation */
-.reveal{opacity:0;transform:translateY(30px);transition:all .6s ease-out}
-.reveal.active{opacity:1;transform:none}
+.enhance .reveal{opacity:0;transform:translateY(30px);transition:all .6s ease-out}
+.enhance .reveal.active{opacity:1;transform:none}
 
 /* Lang switch */
 .lang-switch{position:fixed;top:16px;right:16px;z-index:1000}
