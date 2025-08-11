@@ -779,3 +779,25 @@ function showUpdateToast(message = 'Доступна новая версия') {
   });
 })();
 
+
+
+// Log missing i18n keys on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const langs = ['ru','en'];
+    const missing = {ru: [], en: []};
+    langs.forEach(lang => {
+        const trans = T[lang] || {};
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if(!(key in trans)){
+                if(!missing[lang].includes(key)){
+                    missing[lang].push(key);
+                }
+            }
+        });
+    });
+    console.group('[i18n] Missing keys report');
+    console.log('Missing in RU:', missing.ru);
+    console.log('Missing in EN:', missing.en);
+    console.groupEnd();
+});
