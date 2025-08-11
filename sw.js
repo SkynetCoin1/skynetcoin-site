@@ -1,13 +1,12 @@
 
-const CACHE_NAME = 'site-cache-v1';
+const CACHE_NAME = 'site-cache-v2';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/main.css',
-  '/main.js',
-  '/favicon.svg',
-  '/site.webmanifest',
-  '/social-preview.jpg'
+  'index.html',
+  'main.css',
+  'main.js',
+  'favicon.svg',
+  'site.webmanifest',
+  'social-preview.jpg'
 ];
 
 self.addEventListener('install', event => {
@@ -25,8 +24,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  const req = event.request;
   event.respondWith(
-    caches.match(req).then(cached => cached || fetch(req))
+    caches.match(event.request).then(cached => cached || fetch(event.request))
   );
 });

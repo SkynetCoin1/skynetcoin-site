@@ -518,25 +518,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 
-// --- migrated inline script from index.html ---
-{"@context": "https://schema.org", "@type": "Organization", "name": "Skynet Coin", "url": "https://skynetcoin.io/", "logo": "https://skynetcoin.io/logo.png"}
-{"@context": "https://schema.org", "@type": "WebSite", "name": "Skynet Coin", "url": "https://skynetcoin.io/"}
-document.addEventListener('DOMContentLoaded', function(){
-  function removeByText(txt){
-    const candidates = Array.from(document.querySelectorAll('a,button'));
-    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
-    if (el && el.parentElement) el.parentElement.removeChild(el);
-  }
-  // Удаляем 3 кнопки
-  removeByText('Подключить кошелёк');
-  removeByText('Купить $SKY');
-  // На случай дубля в шапке и в hero — удалим второй раз, если есть
-  removeByText('Подключить кошелёк');
-});
-
-// Register Service Worker for offline caching
+// Register Service Worker for offline caching (relative path for GitHub Pages)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js').catch(() => {});
   });
 }

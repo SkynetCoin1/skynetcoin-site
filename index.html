@@ -27,7 +27,7 @@
 <script crossorigin="anonymous" defer="" src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <script defer="" src="./main.js"></script>
 <style>a.nav-link:visited{ color: var(--primary); }</style>
-<meta content="SkynetCoin" property="og:site_name"/><meta content="ru_RU" property="og:locale"/></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Skynet Coin", "url": "https://skynetcoin.io/", "logo": "https://skynetcoin.io/logo.png"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Skynet Coin", "url": "https://skynetcoin.io/"}</script><meta content="Skynet Coin" property="og:site_name"/><meta content="ru_RU" property="og:locale"/></head>
 <body><a class="skip-link" href="#main">Skip to content</a>
 <!-- Parallax layer -->
 <div aria-hidden="true" id="parallax-bg"></div>
@@ -244,6 +244,19 @@
 <div aria-hidden="true" id="preloader">
 <div class="spinner"></div>
 </div>
-
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  function removeByText(txt){
+    const candidates = Array.from(document.querySelectorAll('a,button'));
+    const el = candidates.find(e => (e.textContent || '').trim().toLowerCase() === txt.toLowerCase());
+    if (el && el.parentElement) el.parentElement.removeChild(el);
+  }
+  // Удаляем 3 кнопки
+  removeByText('Подключить кошелёк');
+  removeByText('Купить $SKY');
+  // На случай дубля в шапке и в hero — удалим второй раз, если есть
+  removeByText('Подключить кошелёк');
+});
+</script>
 </div></body>
 </html>

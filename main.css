@@ -376,7 +376,7 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
   z-index: 10000;
 }
 
-/* Mobile performance: avoid fixed background on mobile */
+/* Mobile: avoid fixed background jank */
 @media (max-width: 768px){
   body::before{ background-attachment: scroll !important; }
 }
