@@ -1,6 +1,7 @@
 const PRECACHE = 'precache-v3';
 const RUNTIME = 'runtime-v1';
 const PRECACHE_URLS = [
+  '/offline.js',
   '/vendor/ethers-5.7.2.min.js',
   '/', '/index.html', '/main.css', '/main.js',
   '/favicon.svg', '/site.webmanifest', '/icon-192x192.png', '/icon-512x512.png',
