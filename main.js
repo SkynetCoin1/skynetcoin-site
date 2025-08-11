@@ -27,11 +27,7 @@ function parallaxTick(){
   const bg = document.getElementById('parallax-bg');
   if(bg) bg.style.backgroundPosition = 'center ' + (-y) + 'px';
 }
-let __parallaxRaf = null;
-window.addEventListener('scroll', () => {
-  if(__parallaxRaf) return;
-  __parallaxRaf = requestAnimationFrame(()=>{ __parallaxRaf = null; parallaxTick(); });
-});
+window.addEventListener('scroll', parallaxTick);
 
 // ===== i18n content =====
 const T = {
@@ -520,47 +516,3 @@ document.addEventListener('DOMContentLoaded', () => {
     if(legacyBtn) legacyBtn.addEventListener('click', onConnectUnified);
   }
 })();
-
-
-// === Parallax without background-attachment (works in iOS Safari & Telegram) ===
-(function(){
-  const bg = document.getElementById('parallax-bg');
-  if (!bg) return;
-
-  const ua = navigator.userAgent || '';
-  const isIOS = /iP(hone|ad|od)/.test(ua);
-  const isWebKit = /WebKit/i.test(ua) && !/Chrome/i.test(ua);
-  const isTelegram = /Telegram/i.test(ua) || typeof window.TelegramWebviewProxy !== 'undefined';
-
-  // Коэф параллакса (чуть меньше на iOS/Telegram, чтобы избежать бэнсинга)
-  const ratio = (isIOS || isTelegram) ? 0.25 : 0.3;
-
-  let ticking = false;
-  let lastY = 0;
-
-  function onScroll(){
-    lastY = window.pageYOffset || document.documentElement.scrollTop || 0;
-    if (!ticking){
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }
-  function update(){
-    const y = Math.max(0, lastY * ratio);
-    // translate лучше, чем backgroundPosition для WKWebView
-    bg.style.transform = 'translate3d(0,'+ y +'px,0)';
-    ticking = false;
-  }
-
-  // iOS Safari меняет визуальный вьюпорт при показе/скрытии адресной строки
-  if (window.visualViewport){
-    window.visualViewport.addEventListener('resize', onScroll, {passive:true});
-    window.visualViewport.addEventListener('scroll', onScroll, {passive:true});
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll, {passive:true});
-
-  // Первый вызов после загрузки, чтобы фон встал на место
-  onScroll();
-})();
-

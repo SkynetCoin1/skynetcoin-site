@@ -18,7 +18,14 @@ body{
   text-align:center;
 }
 /* Parallax background layer */
-
+#parallax-bg{
+  position:fixed;
+  inset:0;
+  background:url('./background.png') center/110% no-repeat;
+  z-index:-1;
+  will-change:transform;
+  background-attachment: fixed; background-position: center 0;
+}
 
 header, section, footer{
   padding:40px 20px;
@@ -83,7 +90,7 @@ ul.feature-list li{margin:8px 0}
 
 /* Buttons: subtle scale + glow on hover/focus */
 a.button, .button, button{
-  , box-shadow;
+  will-change: transform, box-shadow;
 }
 a.button:hover, .button:hover, button:hover{
   transform: translateY(-2px) scale(1.02);
@@ -344,44 +351,3 @@ a.button:focus-visible, .button:focus-visible, button:focus-visible{
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
-
-
-/* iOS/Safari parallax fallback: disable fixed backgrounds to avoid black screens */
-@supports (-webkit-touch-callout: none) {
-  
-}
-
-header, main, footer { position: relative; z-index: 1; }
-
-@media (max-width: 1024px), 
-       (pointer: coarse), 
-       (-webkit-touch-callout: none) {
-  
-}
-
-
-/* --- Mobile & Telegram WebView background fix --- */
-@media (max-width: 1024px), (pointer: coarse), (-webkit-touch-callout: none) {
-  
-}
-
-/* === Robust parallax for iOS/Telegram (no background-attachment: fixed) === */
-#parallax-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 0;
-  background-attachment: scroll !important;
-  transform: translate3d(0,0,0); /* force compositor */
-  will-change: transform;
-  z-index: 0;
-}
-/* контент поверх */
-header, main, footer { position: relative; z-index: 1; }
-
-/* резервный цвет фона, если картинка ещё не прогрузилась */
-html, body { background-color: #000; }
