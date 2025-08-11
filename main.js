@@ -32,154 +32,89 @@ window.addEventListener('scroll', parallaxTick);
 // ===== i18n content =====
 const T = {
   en: {
-    hero_title: "The AI-Powered Future of Cryptocurrency",
-    hero_sub: "Skynet Coin — synergy of blockchain and artificial intelligence",
-    hero_p: "A decentralized token on BNB Chain, built for speed, security, and real AI solutions.",
-
-    about_p1: "Skynet Coin ($SKY) combines blockchain and AI. We are building an ecosystem where AI assists in investment decisions, DAO governance, and automated trading.",
-
-    tokenomics_1: "Total supply: 1,000,000,000 SKY",
-    tokenomics_2: "Liquidity & Exchanges — 40%",
-    tokenomics_3: "Ecosystem development — 30%",
+    about_h2: "About Skynet Coin",
+    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ...",
+    airdrop_p: "Subscribe to our social networks and connect your wallet...",
+    community_h2: "NFT / DAO / Utility",
+    copy_contract_btn: "$SKY contract",
+    feature_ai_h3: "AI integration",
+    feature_ai_p: "AI modules help analyze the market and automate decisions.",
+    feature_decentral_h3: "Decentralization",
+    feature_decentral_p: "DAO voting and community‑driven development.",
+    feature_security_h3: "Security",
+    feature_security_p: "Transparent smart contract, open code, and protection against common attack vectors.",
+    feature_speed_h3: "Speed & fees",
+    feature_speed_p: "BNB Chain: fast transactions and low fees for everyday use.",
+    features_h2: "Why choose us",
+    footer: "Contacts: info@skynetcoin.io",
+    hero_p: "A decentralized token on BNB Chain, built for speed, security, and real AI utility.",
+    hero_sub: "Skynet Coin — the synergy of blockchain and artificial intelligence",
+    hero_title: "The AI‑Driven Future of Cryptocurrency",
+    link_whitepaper: "Whitepaper",
+    nav_about: "About",
+    nav_airdrop: "Airdrop",
+    nav_community: "Community",
+    nav_roadmap: "Roadmap",
+    nav_tokenomics: "Tokenomics",
+    nftdao_1: "NFT with unique AI‑generated art",
+    nftdao_2: "DAO voting for project development",
+    nftdao_3: "AI tools for market analysis",
+    nftdao_4: "Access to members‑only community events",
+    roadmap_1: "Q1 2025 — Token and website launch",
+    roadmap_2: "Q2 2025 — DEX listing and NFT platform launch",
+    roadmap_3: "Q3 2025 — AI modules integration and DAO launch",
+    roadmap_4: "Q4 2025 — CEX listing and mobile app",
+    roadmap_h2: "Roadmap",
+    skip_link: "Skip to content",
+    tokenomics_1: "Liquidity — 20%",
+    tokenomics_2: "Team & Advisors — 20%",
+    tokenomics_3: "Ecosystem growth — 30%",
     tokenomics_4: "Marketing & Partnerships — 20%",
     tokenomics_5: "Reserve fund — 10%",
-
-    roadmap_1: "Q1 2025 — Token & website launch",
-    roadmap_2: "Q2 2025 — DEX listing & NFT platform launch",
-    roadmap_3: "Q3 2025 — AI modules integration & DAO launch",
-    roadmap_4: "Q4 2025 — CEX listing & mobile app launch",
-
-    nftdao_1: "NFTs with unique AI-generated art",
-    nftdao_2: "DAO voting for project development",
-    nftdao_3: "AI-powered market analysis tools",
-    nftdao_4: "Access to exclusive community events",
-
-    airdrop_p: "Follow our socials and connect your wallet to claim free $SKY tokens. Details in our Telegram channel.",
-
-    footer: "Contact: " + window.SKY.CONTACT_EMAIL
-  
-    "skip_link": "Skip to content",
-  
-    "toast_action": "Refresh",
-  
-    "copy_contract_btn": "$SKY contract",
-  
-    "nav_about": "About",
-  
-    "nav_tokenomics": "Tokenomics",
-  
-    "nav_roadmap": "Roadmap",
-  
-    "nav_community": "Community",
-  
-    "nav_airdrop": "Airdrop",
-  
-    "nav_bscscan": "BscScan",
-  
-    "features_h2": "Why choose us",
-  
-    "feature_ai_h3": "AI integration",
-  
-    "feature_ai_p": "AI modules help analyze the market and automate decisions.",
-  
-    "feature_speed_h3": "Speed & fees",
-  
-    "feature_speed_p": "BNB Chain: fast transactions and low fees for everyone.",
-  
-    "feature_security_h3": "Security",
-  
-    "feature_security_p": "Transparent smart contract, open code and wallet protection.",
-  
-    "feature_decentral_h3": "Decentralization",
-  
-    "feature_decentral_p": "Voting via DAO and community participation in ecosystem growth.",
-  
-    "about_h2": "About Skynet Coin",
-  
-    "tokenomics_h2": "Tokenomics",
-  
-    "link_whitepaper": "Whitepaper",
-  
-    "roadmap_h2": "Roadmap",
-  
-    "community_h2": "NFT / DAO / Utility",
-  
-    "buy_h2": "How to buy $SKY",
+    tokenomics_h2: "Tokenomics"
   },
+
   ru: {
-    hero_title: "Будущее криптовалюты управляемое ИИ",
-    hero_sub: "Skynet Coin — синергия блокчейна и искусственного интеллекта",
+    about_h2: "О проекте Skynet Coin",
+    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ...",
+    airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк...",
+    community_h2: "NFT / DAO / Utility",
+    copy_contract_btn: "$SKY контракт",
+    feature_ai_h3: "AI‑интеграция",
+    feature_ai_p: "Модули ИИ помогают анализировать рынок и автоматизировать решения.",
+    feature_decentral_h3: "Децентрализация",
+    feature_decentral_p: "Голосование через DAO и участие сообщества в развитии экосистемы.",
+    feature_security_h3: "Безопасность",
+    feature_security_p: "Прозрачный смарт‑контракт, открытый код и защита кошелька.",
+    feature_speed_h3: "Скорость и комиссии",
+    feature_speed_p: "BNB Chain: быстрые транзакции и низкие комиссии для всех пользователей.",
+    features_h2: "Наши преимущества",
+    footer: "Контакты: info@skynetcoin.io",
     hero_p: "Децентрализованный токен на BNB Chain, созданный для скорости, безопасности и реальных AI-решений.",
-
-    about_p1: "Skynet Coin ($SKY) объединяет блокчейн и ИИ. Мы строим экосистему, где AI помогает принимать инвестиционные решения, управлять DAO и автоматизировать торговлю.",
-
+    hero_sub: "Skynet Coin — синергия блокчейна и искусственного интеллекта",
+    hero_title: "Будущее криптовалюты управляемое ИИ",
+    link_whitepaper: "Whitepaper",
+    nav_about: "О проекте",
+    nav_airdrop: "Airdrop",
+    nav_community: "Сообщество",
+    nav_roadmap: "Дорожная карта",
+    nav_tokenomics: "Токеномика",
+    nftdao_1: "NFT с уникальными AI‑генерированными артами",
+    nftdao_2: "Голосование в DAO за развитие проекта",
+    nftdao_3: "AI‑инструменты для анализа рынка",
+    nftdao_4: "Доступ к закрытым мероприятиям сообщества",
+    roadmap_1: "Q1 2025 — Запуск токена и сайта",
+    roadmap_2: "Q2 2025 — Листинг на DEX и запуск NFT‑платформы",
+    roadmap_3: "Q3 2025 — Интеграция AI‑модулей и запуск DAO",
+    roadmap_4: "Q4 2025 — Листинг на CEX и мобильное приложение",
+    roadmap_h2: "Дорожная карта",
+    skip_link: "Skip to content",
     tokenomics_1: "Общий объём: 1,000,000,000 SKY",
     tokenomics_2: "Ликвидность и биржи — 40%",
     tokenomics_3: "Развитие экосистемы — 30%",
     tokenomics_4: "Маркетинг и партнёрства — 20%",
     tokenomics_5: "Резервный фонд — 10%",
-
-    roadmap_1: "Q1 2025 — Запуск токена и сайта",
-    roadmap_2: "Q2 2025 — Листинг на DEX и запуск NFT-платформы",
-    roadmap_3: "Q3 2025 — Интеграция AI-модулей и запуск DAO",
-    roadmap_4: "Q4 2025 — Листинг на CEX и мобильное приложение",
-
-    nftdao_1: "NFT с уникальными AI-генерированными артами",
-    nftdao_2: "Голосование в DAO за развитие проекта",
-    nftdao_3: "AI‑инструменты для анализа рынка",
-    nftdao_4: "Доступ к закрытым мероприятиям сообщества",
-
-    airdrop_p: "Подпишитесь на наши соцсети и подключите кошелёк, чтобы получить бесплатные токены $SKY. Подробности — в Telegram-канале.",
-
-    footer: "Контакты: " + window.SKY.CONTACT_EMAIL
-  
-    "skip_link": "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u043c\u043e\u043c\u0443",
-  
-    "toast_action": "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c",
-  
-    "copy_contract_btn": "$SKY \u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442",
-  
-    "nav_about": "\u041e \u043f\u0440\u043e\u0435\u043a\u0442\u0435",
-  
-    "nav_tokenomics": "\u0422\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0430",
-  
-    "nav_roadmap": "\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430",
-  
-    "nav_community": "\u0421\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u043e",
-  
-    "nav_airdrop": "Airdrop",
-  
-    "nav_bscscan": "BscScan",
-  
-    "features_h2": "\u041d\u0430\u0448\u0438 \u043f\u0440\u0435\u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u0430",
-  
-    "feature_ai_h3": "AI\u2011\u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f",
-  
-    "feature_ai_p": "\u041c\u043e\u0434\u0443\u043b\u0438 \u0418\u0418 \u043f\u043e\u043c\u043e\u0433\u0430\u044e\u0442 \u0430\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u044b\u043d\u043e\u043a \u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0440\u0435\u0448\u0435\u043d\u0438\u044f.",
-  
-    "feature_speed_h3": "\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0438 \u043a\u043e\u043c\u0438\u0441\u0441\u0438\u0438",
-  
-    "feature_speed_p": "BNB Chain: \u0431\u044b\u0441\u0442\u0440\u044b\u0435 \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u0438 \u0438 \u043d\u0438\u0437\u043a\u0438\u0435 \u043a\u043e\u043c\u0438\u0441\u0441\u0438\u0438 \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.",
-  
-    "feature_security_h3": "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c",
-  
-    "feature_security_p": "\u041f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u0439 \u0441\u043c\u0430\u0440\u0442\u2011\u043a\u043e\u043d\u0442\u0440\u0430\u043a\u0442, \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u043e\u0434 \u0438 \u0437\u0430\u0449\u0438\u0442\u0430 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430.",
-  
-    "feature_decentral_h3": "\u0414\u0435\u0446\u0435\u043d\u0442\u0440\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f",
-  
-    "feature_decentral_p": "\u0413\u043e\u043b\u043e\u0441\u043e\u0432\u0430\u043d\u0438\u0435 \u0447\u0435\u0440\u0435\u0437 DAO \u0438 \u0443\u0447\u0430\u0441\u0442\u0438\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430 \u0432 \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0438 \u044d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u044b.",
-  
-    "about_h2": "\u041e \u043f\u0440\u043e\u0435\u043a\u0442\u0435 Skynet Coin",
-  
-    "tokenomics_h2": "\u0422\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0430",
-  
-    "link_whitepaper": "Whitepaper",
-  
-    "roadmap_h2": "\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430",
-  
-    "community_h2": "NFT / DAO / Utility",
-  
-    "buy_h2": "\u041a\u0430\u043a \u043a\u0443\u043f\u0438\u0442\u044c $SKY",
+    tokenomics_h2: "Токеномика"
   }
 };
 
