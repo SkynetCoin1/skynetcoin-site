@@ -87,27 +87,14 @@ const T = {
   }
 };
 
-
 function setLang(lang){
-  try{ localStorage.setItem('lang', lang); }catch(e){}
+  localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
-  const trans = (typeof T !== 'undefined' && T[lang]) ? T[lang] : (T && T['ru']) || {};
-
-  document.querySelectorAll('[data-lang]').forEach(btn => {
-    btn.classList.toggle('active-lang', btn.getAttribute('data-lang') === lang);
-  });
-
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (key in trans) {
-      el.innerHTML = trans[key];
-      console.log('[i18n] Updated key:', key);
-    } else {
-      console.warn('[i18n] Missing key:', key);
-    }
-  });
-}
-
+  const trans = T[lang] || T['ru'];
+  for(const [key,val] of Object.entries(trans)){
+    const els = document.querySelectorAll('[data-i18n="'+key+'"]');
+    els.forEach(el => el.textContent = val);
+  }
 }
 
 window.addEventListener("DOMContentLoaded", ()=>{
@@ -534,14 +521,269 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register Service Worker for offline caching (relative path for GitHub Pages)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js', { scope: './' }).catch(() => {});
+    navigator.serviceWorker.register('sw.js').catch(() => {});
   });
 }
 
-try {
-  const i18nObserver = new MutationObserver(() => {
-    const currentLang = (localStorage && localStorage.getItem('lang')) || 'ru';
-    if (typeof setLang === 'function') setLang(currentLang);
+
+// === Injected enhancements ===
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      if (typeof setLang === 'function') setLang(lang);
+    });
   });
-  i18nObserver.observe(document.body, { childList: true, subtree: true });
-} catch(e) {}
+});
+
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.getRegistration().then(r => {
+      const registerSW = (reg) => {
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          nw && nw.addEventListener('statechange', () => {
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+              showToast('Доступна новая версия. Обновите страницу.');
+            }
+          });
+        });
+      };
+      if (r) registerSW(r);
+      else navigator.serviceWorker.register('/sw.js').then(registerSW);
+    });
+  });
+}
+
+
+// === Auto-bind data-event-* handlers ===
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('*').forEach(el => {
+    Array.from(el.attributes).forEach(attr => {
+      if (attr.name.startsWith('data-event-')) {
+        const eventType = attr.name.replace('data-event-', '');
+        try {
+          const fn = new Function(attr.value);
+          el.addEventListener(eventType, fn);
+        } catch(e) {
+          console.error('Failed to bind inline handler for', el, e);
+        }
+      }
+    });
+  });
+});
+
+
+// === Global inline-handlers delegator (no inline, CSP-safe) ===
+(function(){
+  const parseCall = (s) => {
+    // поддержка формата fnName('a', 1, true)
+    const m = s && s.trim().match(/^([a-zA-Z_$][\w$]*)\s*\((.*)\)\s*$/);
+    if(!m) return null;
+    const fn = m[1];
+    const argsStr = m[2].trim();
+    if(!argsStr) return {fn, args: []};
+    // безопасный разбор аргументов: строки/числа/true/false/null
+    const args = [];
+    let buf = ''; let inStr = false; let quote = '';
+    for (let i=0;i<argsStr.length;i++){
+      const ch = argsStr[i];
+      if(inStr){
+        buf += ch;
+        if(ch === quote && argsStr[i-1] !== '\\'){ inStr = false; }
+      }else{
+        if(ch === "'" || ch === '"'){ inStr = true; quote = ch; buf += ch; }
+        else if(ch === ','){ if(buf.trim()) args.push(buf.trim()); buf=''; }
+        else { buf += ch; }
+      }
+    }
+    if(buf.trim()) args.push(buf.trim());
+    const norm = args.map(a=>{
+      if(/^['"].*['"]$/.test(a)) return a.slice(1,-1);
+      if(/^(true|false)$/i.test(a)) return a.toLowerCase()==='true';
+      if(/^null$/i.test(a)) return null;
+      const n = Number(a);
+      return Number.isNaN(n) ? a : n;
+    });
+    return {fn, args: norm};
+  };
+
+  document.addEventListener('click', (e) => {
+    const path = e.composedPath ? e.composedPath() : (function(){ let p=[],el=e.target; while(el){p.push(el); el=el.parentElement;} return p; })();
+    for(const el of path){
+      if(!el || !el.getAttribute) continue;
+      const call = el.getAttribute('data-onclick');
+      if(call){
+        const parsed = parseCall(call);
+        if(parsed && typeof window[parsed.fn] === 'function'){
+          e.preventDefault();
+          try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
+        }
+        break;
+      }
+    }
+  });
+
+  // Аналогично для change/submit по необходимости
+  document.addEventListener('change', (e) => {
+    const el = e.target;
+    const call = el && el.getAttribute && el.getAttribute('data-onchange');
+    if(call){
+      const parsed = parseCall(call);
+      if(parsed && typeof window[parsed.fn] === 'function'){
+        try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
+      }
+    }
+  });
+
+  document.addEventListener('submit', (e) => {
+    const el = e.target;
+    const call = el && el.getAttribute && el.getAttribute('data-onsubmit');
+    if(call){
+      e.preventDefault();
+      const parsed = parseCall(call);
+      if(parsed && typeof window[parsed.fn] === 'function'){
+        try{ window[parsed.fn].apply(el, parsed.args); }catch(err){ console.error(err); }
+      }
+    }
+  });
+})();
+
+
+
+// === PWA update UX ===
+function showUpdateToast(message = 'Доступна новая версия') {
+  const toast = document.getElementById('toast');
+  const btn = document.getElementById('toast-action');
+  if(!toast || !btn){ return; }
+  toast.textContent = message;
+  toast.hidden = false;
+  btn.hidden = false;
+}
+
+(function setupSWUpdateFlow(){
+  if(!('serviceWorker' in navigator)) return;
+  let waitingSW = null;
+
+  function listenForWaiting(reg){
+    if (reg.waiting) {
+      waitingSW = reg.waiting;
+      showUpdateToast('Доступна новая версия. Обновить сейчас?');
+    }
+    reg.addEventListener('updatefound', () => {
+      const nw = reg.installing;
+      if (!nw) return;
+      nw.addEventListener('statechange', () => {
+        if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+          waitingSW = reg.waiting;
+          showUpdateToast('Доступна новая версия. Обновить сейчас?');
+        }
+      });
+    });
+  }
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if(!reg) return;
+      listenForWaiting(reg);
+    });
+  });
+
+  const btn = document.getElementById('toast-action');
+  if(btn){
+    btn.addEventListener('click', () => {
+      if(waitingSW){
+        waitingSW.postMessage({type: 'SKIP_WAITING'});
+      }
+    });
+  }
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    // новый SW активировался — перезагрузим страницу
+    window.location.reload();
+  });
+})();
+
+
+
+// === Added: smooth scroll & reveal on scroll ===
+(function(){
+  // Smooth scroll for in-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Reveal on scroll
+  const reveal = (el) => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(14px)';
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.style.transition = 'opacity .6s ease, transform .6s ease';
+          en.target.style.opacity = 1;
+          en.target.style.transform = 'translateY(0)';
+          obs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  };
+
+  document.querySelectorAll('section, .card, .step, .roadmap li').forEach(reveal);
+})();
+// === End added ===
+
+
+/* === Added JS for release (smooth scroll, reveal on scroll) === */
+(function(){
+  try {
+    // Smooth scroll for internal anchors
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      const el = document.querySelector(href);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', href);
+      }
+    }, {passive:false});
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Roadmap highlight on scroll (optional)
+    const roadmap = document.querySelectorAll('#roadmap li');
+    if (roadmap.length) {
+      const roi = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          entry.target.classList.toggle('active', entry.isIntersecting);
+        });
+      }, { threshold: 0.6 });
+      roadmap.forEach(li=>roi.observe(li));
+    }
+  } catch(e) { console.warn('Enhancement scripts error:', e); }
+})();
+/* === End added JS === */
